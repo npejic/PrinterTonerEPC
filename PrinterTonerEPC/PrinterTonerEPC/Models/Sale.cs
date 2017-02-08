@@ -13,10 +13,12 @@ namespace PrinterToner.Models
         [Required(ErrorMessage = "Morate uneti datum prodaje YYYY.MM.DD")]
         public DateTime SaleDate { get; set; }
         public float Price { get; set; }
+        //TODO: Tip ugovora
         public SaleType a { get; set; }
         public enum SaleType { Pausal, GratisRenta, Else }
 
-        [Range(1, 36, ErrorMessage = "Trajanje ugovora se unosi u mesecima i mora biti veće od 0")]
+        //[Range(1, 36, ErrorMessage = "Trajanje ugovora se unosi u mesecima i mora biti veće od 0")]
+        //IZBACITI
         public int SaleDuration { get; set; }
 
         public int ContractID { get; set; }
