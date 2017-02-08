@@ -19,9 +19,10 @@ namespace PrinterToner.Models
         //public string PrinterTonerMake { get; set; }
         public string PrinterInternalNo { get; set; }
         public bool PrinterDecommissioned { get; set; }
+        public bool IsEPCprinter { get; set; }
 
-        public int OwnerID { get; set; }
-        public virtual Owner Owner { get; set; }
+        //public int OwnerID { get; set; }
+        //public virtual Owner Owner { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
     }

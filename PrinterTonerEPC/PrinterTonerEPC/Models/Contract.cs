@@ -9,7 +9,7 @@ namespace PrinterToner.Models
 {
     public class Contract : BaseClass
     {
-        //[Key]
+        [Key]
         public int ContractID { get; set; }
         public string ContractName { get; set; }
         public int ContractDuration { get; set; }

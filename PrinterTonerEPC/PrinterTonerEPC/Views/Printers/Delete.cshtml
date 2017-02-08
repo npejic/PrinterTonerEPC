@@ -1,0 +1,88 @@
+﻿@model PrinterToner.Models.Printer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Printer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrinterManufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrinterManufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrinterModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrinterModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrinterSerialNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrinterSerialNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrinterHardwareNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrinterHardwareNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrinterInternalNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrinterInternalNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrinterDecommissioned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrinterDecommissioned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEPCprinter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEPCprinter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

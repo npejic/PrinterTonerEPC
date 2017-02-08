@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PrinterToner.Models.Printer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrinterManufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrinterModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrinterSerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrinterHardwareNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrinterInternalNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrinterDecommissioned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEPCprinter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrinterManufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrinterModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrinterSerialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrinterHardwareNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrinterInternalNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrinterDecommissioned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsEPCprinter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PrinterID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PrinterID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PrinterID })
+        </td>
+    </tr>
+}
+
+</table>
