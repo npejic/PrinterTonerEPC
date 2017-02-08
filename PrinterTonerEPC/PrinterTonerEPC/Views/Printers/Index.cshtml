@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.PrinterInternalNo)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PrinterManufacturer)
         </th>
         <th>
@@ -22,9 +25,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PrinterHardwareNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrinterInternalNo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PrinterDecommissioned)
@@ -41,6 +41,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.PrinterInternalNo)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.PrinterManufacturer)
         </td>
         <td>
@@ -51,9 +54,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PrinterHardwareNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrinterInternalNo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PrinterDecommissioned)

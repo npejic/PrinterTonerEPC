@@ -47,7 +47,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PrinterID,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterInternalNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
+        public ActionResult Create([Bind(Include = "PrinterID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PrinterID,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterInternalNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
+        public ActionResult Edit([Bind(Include = "PrinterID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
         {
             if (ModelState.IsValid)
             {

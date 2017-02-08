@@ -41,7 +41,7 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult Create()
         {
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName");
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterManufacturer");
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo");
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
             return View();
         }
@@ -51,7 +51,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SaleID,SaleDate,Price,a,SaleDuration,ContractID,PrinterID,TonerID,Created")] Sale sale)
+        public ActionResult Create([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,PrinterID,TonerID,Created")] Sale sale)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace PrinterTonerEPC.Controllers
             }
 
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterManufacturer", sale.PrinterID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
             return View(sale);
         }
@@ -79,7 +79,7 @@ namespace PrinterTonerEPC.Controllers
                 return HttpNotFound();
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterManufacturer", sale.PrinterID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
             return View(sale);
         }
@@ -89,7 +89,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SaleID,SaleDate,Price,a,SaleDuration,ContractID,PrinterID,TonerID,Created")] Sale sale)
+        public ActionResult Edit([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,PrinterID,TonerID,Created")] Sale sale)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterManufacturer", sale.PrinterID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
             return View(sale);
         }

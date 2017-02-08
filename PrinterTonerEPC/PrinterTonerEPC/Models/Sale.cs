@@ -13,7 +13,9 @@ namespace PrinterToner.Models
         [Required(ErrorMessage = "Morate uneti datum prodaje YYYY.MM.DD")]
         public DateTime SaleDate { get; set; }
         public float Price { get; set; }
-        
+
+        public LocationTypeOfPrinter LocationOfPrinterIs { get; set; }
+        public enum LocationTypeOfPrinter { U_firmi, U_magacinu }
 
         public int ContractID { get; set; }
         public virtual Contract Contract { get; set; }

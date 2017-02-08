@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Contract.ContractName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Printer.PrinterManufacturer)
+            @Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Toner.TonerModel)
@@ -25,6 +25,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationOfPrinterIs)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Created)
@@ -38,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Contract.ContractName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Printer.PrinterManufacturer)
+            @Html.DisplayFor(modelItem => item.Printer.PrinterInternalNo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Toner.TonerModel)
@@ -49,7 +52,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-       <td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationOfPrinterIs)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
