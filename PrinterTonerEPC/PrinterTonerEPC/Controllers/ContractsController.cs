@@ -49,7 +49,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContractID,ContractName,ContractDuration,OwnerID,ContractComplete,Created")] Contract contract)
+        public ActionResult Create([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,Created")] Contract contract)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContractID,ContractName,ContractDuration,OwnerID,ContractComplete,Created")] Contract contract)
+        public ActionResult Edit([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,Created")] Contract contract)
         {
             if (ModelState.IsValid)
             {

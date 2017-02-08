@@ -12,11 +12,17 @@ namespace PrinterToner.Models
         [Key]
         public int ContractID { get; set; }
         public string ContractName { get; set; }
-        public int ContractDuration { get; set; }
+        
 
         public int OwnerID { get; set; }
         public virtual Owner Owner { get; set; }
 
+        public ContractType ContractIs { get; set; }
+        public enum ContractType { Pausal, GratisRenta, Else }
+
+        [Range(1, 36, ErrorMessage = "Trajanje ugovora se unosi u mesecima i mora biti veće od 0")]
+        public int ContactDuration { get; set; }
+         
         public bool ContractComplete { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
