@@ -20,6 +20,8 @@ namespace PrinterToner.Models
         public int ContractID { get; set; }
         public virtual Contract Contract { get; set; }
 
+        public string AlternateContract { get; set; }
+        
         public int PrinterID { get; set; }
         public virtual Printer Printer { get; set; }
 
