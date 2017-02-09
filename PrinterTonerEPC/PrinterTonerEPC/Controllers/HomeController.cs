@@ -58,6 +58,52 @@ namespace PrinterTonerEPC.Controllers
                 return View(sales.ToList());
             }
 
+        public ActionResult ModifyAltContract(string ModifyAlternateContract)//, string ModifyAlternateContract)
+        {
+            PrinterTonerContext db = new PrinterTonerContext();
+            var sales = from s in db.Sales
+                        select s;
+
+            if (!String.IsNullOrEmpty(ModifyAlternateContract))
+            {
+                sales = sales.Where(s => s.Contract.Owner.OwnerName == "nik" && s.Printer.IsEPCprinter == true);
+                foreach (var s in sales)
+                    s.AlternateContract = ModifyAlternateContract;
+                db.SubmitChanges();
+            }
+
+            //
+            //foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName == searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
+            //{
+            //    salesModified.AlternateContract = ModifyAlternateContract;
+            //}
+            //db.SubmitChanges();
+
+
+            //var salesModified = db.Sales;
+            //if (!String.IsNullOrEmpty(ModifyAlternateContract))
+            //{
+            //    foreach (string AlternateContract in salesModified)
+            //    {
+
+            //    }
+            //}
+
+            //Modifying multiple rows
+            //using (db)
+            //{
+
+            //    foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName== searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
+            //    {
+            //        salesModified.AlternateContract = ModifyAlternateContract;
+            //    }
+            //    db.SubmitChanges();
+            //}
+
+
+            return View(sales.ToList());
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
