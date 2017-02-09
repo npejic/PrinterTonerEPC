@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrinterToner.Models.Owner>
+﻿@model IEnumerable<PrinterToner.Models.Sale>
 
 @{
     ViewBag.Title = "Index";
@@ -7,88 +7,94 @@
 <h2>Index</h2>
 
 @using (Html.BeginForm())
-{ <p> Week: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
+{ <p> Vlasnik: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
+
+@*@using (Html.BeginForm())
+{ <p> Novi ugovor: @Html.TextBox("ModifyAlternateContract") <input type="submit" value="Search" /></p> }*@
+
+
+@*@using (Html.BeginForm())
+{ <p> Month: @Html.TextBox("searchByOwner") </p>
+    <p> Year: @Html.TextBox("ModifyAlternateContract") <input type="submit" value="Search" /></p> }*@
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 
-<table class="table">
+@*//TODO: Izbrisati*@
+@*<table class="table">
     <tr>
         <th>
             BLA
         </th>
+    </tr>
+</table>*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Contract.ContractName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toner.TonerModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationOfPrinterIs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlternateContract)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contract.ContractName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Printer.PrinterInternalNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toner.TonerModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationOfPrinterIs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlternateContract)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            
+            @*//TODO: Izbrisati*@
+            
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SaleID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SaleID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SaleID })
+            </td>*@
         </tr>
-        </table>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerName)
-                </th>
+    }
 
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerTelephone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerAddress)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerContact)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerContactTelephone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerPIB)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerMatBroj)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OwnerIsInPDV)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Created)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerTelephone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerAddress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerContact)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerContactTelephone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerPIB)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerMatBroj)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OwnerIsInPDV)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Created)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.OwnerID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.OwnerID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.OwnerID })
-                    </td>
-                </tr>
-            }
-
-        </table>
+</table>

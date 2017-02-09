@@ -17,5 +17,10 @@ namespace PrinterTonerEPC.DAL
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         //public System.Data.Entity.DbSet<PrinterTonerEPC.Models.Printer> Printers { get; set; }
+
+        internal void SubmitChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

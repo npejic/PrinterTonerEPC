@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PrinterTonerEPC.DAL;
 
+
 namespace PrinterTonerEPC.Controllers
 {
     public class HomeController : Controller
@@ -14,19 +15,48 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
-        public ActionResult ReportByOwner(string searchByOwner)
+        public ActionResult ReportByOwner(string searchByOwner)//, string ModifyAlternateContract)
         {
             PrinterTonerContext db = new PrinterTonerContext();
-            var owners = from s in db.Owners
+            var sales = from s in db.Sales
                          select s;
 
             if (!String.IsNullOrEmpty(searchByOwner))
             {
-                owners = owners.Where(s => s.OwnerName == searchByOwner);
+                sales = sales.Where(s => s.Contract.Owner.OwnerName == searchByOwner && s.Printer.IsEPCprinter==true);
             }
+            
+            //
+                //foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName == searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
+                //{
+                //    salesModified.AlternateContract = ModifyAlternateContract;
+                //}
+                //db.SubmitChanges();
+            
 
-            return View(owners.ToList());
-        }
+            //var salesModified = db.Sales;
+            //if (!String.IsNullOrEmpty(ModifyAlternateContract))
+            //{
+            //    foreach (string AlternateContract in salesModified)
+            //    {
+                   
+            //    }
+            //}
+
+            //Modifying multiple rows
+            //using (db)
+            //{
+                
+            //    foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName== searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
+            //    {
+            //        salesModified.AlternateContract = ModifyAlternateContract;
+            //    }
+            //    db.SubmitChanges();
+            //}
+
+
+                return View(sales.ToList());
+            }
 
         public ActionResult About()
         {
