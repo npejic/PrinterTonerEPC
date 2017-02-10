@@ -27,5 +27,6 @@ namespace PrinterToner.Models
 
         //public virtual ICollection<Printer> Printers { get; set; }
         public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual ICollection<Servis> Servis { get; set; }
     }
 }

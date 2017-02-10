@@ -22,5 +22,7 @@ namespace PrinterTonerEPC.DAL
         {
             throw new NotImplementedException();
         }
+
+        public System.Data.Entity.DbSet<PrinterToner.Models.Servis> Servis { get; set; }
     }
 }

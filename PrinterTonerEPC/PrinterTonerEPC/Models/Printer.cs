@@ -27,5 +27,6 @@ namespace PrinterToner.Models
         //public virtual Owner Owner { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<Servis> Servis { get; set; }
     }
 }

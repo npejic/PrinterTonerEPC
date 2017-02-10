@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PrinterToner.Models.Servis>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner.OwnerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServisDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Napomena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.OwnerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Printer.PrinterInternalNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServisDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Napomena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServisID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ServisID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServisID })
+        </td>
+    </tr>
+}
+
+</table>
