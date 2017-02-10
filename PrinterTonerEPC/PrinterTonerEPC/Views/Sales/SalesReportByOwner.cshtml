@@ -10,12 +10,12 @@
 { <p> Vlasnik: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
 
 @*@using (Html.BeginForm())
-{ <p> Novi ugovor: @Html.TextBox("ModifyAlternateContract") <input type="submit" value="Search" /></p> }*@
+    { <p> Novi ugovor: @Html.TextBox("ModifyAlternateContract") <input type="submit" value="Search" /></p> }*@
 
 
 @*@using (Html.BeginForm())
-{ <p> Month: @Html.TextBox("searchByOwner") </p>
-    <p> Year: @Html.TextBox("ModifyAlternateContract") <input type="submit" value="Search" /></p> }*@
+    { <p> Month: @Html.TextBox("searchByOwner") </p>
+        <p> Year: @Html.TextBox("ModifyAlternateContract") <input type="submit" value="Search" /></p> }*@
 
 @*<p>
         @Html.ActionLink("Create New", "Create")
@@ -23,12 +23,12 @@
 
 @*//TODO: Izbrisati*@
 @*<table class="table">
-    <tr>
-        <th>
-            BLA
-        </th>
-    </tr>
-</table>*@
+        <tr>
+            <th>
+                BLA
+            </th>
+        </tr>
+    </table>*@
 
 <table class="table">
     <tr>
@@ -86,11 +86,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Created)
             </td>
-            
+
             @*//TODO: Izbrisati*@
-            
+
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SaleID }) |
+                @Html.ActionLink("Edit", "EditSalesReportByOwner", new { id = item.SaleID }) |
                 @*@Html.ActionLink("Details", "Details", new { id = item.SaleID }) |*@
                 @Html.ActionLink("Delete", "Delete", new { id = item.SaleID })
             </td>

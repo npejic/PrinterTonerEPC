@@ -6,6 +6,10 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm())
+{ <p> Vlasnik: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
+
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

@@ -200,6 +200,8 @@
     <Content Include="Views\Sales\Edit.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Home\ModifyAltContract.cshtml" />
+    <Content Include="Views\Sales\SalesReportByOwner.cshtml" />
+    <Content Include="Views\Sales\EditSalesReportByOwner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

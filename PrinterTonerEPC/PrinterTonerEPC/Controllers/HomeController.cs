@@ -15,49 +15,21 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
-        public ActionResult ReportByOwner(string searchByOwner)//, string ModifyAlternateContract)
+        public ActionResult ReportByOwner(string searchByOwner)
         {
             PrinterTonerContext db = new PrinterTonerContext();
             var sales = from s in db.Sales
                          select s;
 
-            if (!String.IsNullOrEmpty(searchByOwner))
+            if (!string.IsNullOrEmpty(searchByOwner))
             {
-                sales = sales.Where(s => s.Contract.Owner.OwnerName == searchByOwner && s.Printer.IsEPCprinter==true);
+                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner));// && s.printer.isepcprinter==true);
             }
             
-            //
-                //foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName == searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
-                //{
-                //    salesModified.AlternateContract = ModifyAlternateContract;
-                //}
-                //db.SubmitChanges();
-            
-
-            //var salesModified = db.Sales;
-            //if (!String.IsNullOrEmpty(ModifyAlternateContract))
-            //{
-            //    foreach (string AlternateContract in salesModified)
-            //    {
-                   
-            //    }
-            //}
-
-            //Modifying multiple rows
-            //using (db)
-            //{
-                
-            //    foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName== searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
-            //    {
-            //        salesModified.AlternateContract = ModifyAlternateContract;
-            //    }
-            //    db.SubmitChanges();
-            //}
-
-
                 return View(sales.ToList());
             }
 
+        //TODO: Izbrisati
         public ActionResult ModifyAltContract(string ModifyAlternateContract)//, string ModifyAlternateContract)
         {
             PrinterTonerContext db = new PrinterTonerContext();

@@ -22,6 +22,20 @@ namespace PrinterTonerEPC.Controllers
             return View(sales.ToList());
         }
 
+        public ActionResult SalesReportByOwner(string searchByOwner)
+        {
+            PrinterTonerContext db = new PrinterTonerContext();
+            var sales = from s in db.Sales
+                        select s;
+
+            if (!string.IsNullOrEmpty(searchByOwner))
+            {
+                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner));// && s.printer.isepcprinter==true);
+            }
+
+            return View(sales.ToList());
+        }
+
         // GET: Sales/Details/5
         public ActionResult Details(int? id)
         {
@@ -66,6 +80,48 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
+        //TODO:
+        // GET: Sales/Edit/5
+        public ActionResult EditSalesReportByOwner(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Sale sale = db.Sales.Find(id);
+            if (sale == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
+            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
+            return View(sale);
+        }
+
+        // POST: Sales/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSalesReportByOwner([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(sale).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
+            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
+            return View(sale);
+        }
+
+        ////////////////////////////////
+        
+        
+        
         // GET: Sales/Edit/5
         public ActionResult Edit(int? id)
         {

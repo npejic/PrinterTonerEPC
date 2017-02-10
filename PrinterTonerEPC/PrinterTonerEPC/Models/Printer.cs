@@ -10,12 +10,12 @@ namespace PrinterToner.Models
     public class Printer : BaseClass
     {
         public int PrinterID { get; set; }
-        [Required(ErrorMessage = "Morate uneti interni broj štampača")]
         public string PrinterInternalNo { get; set; }
         [Required(ErrorMessage = "Morate uneti naziv proizvođača štampača")]
         public string PrinterManufacturer { get; set; }
         [Required(ErrorMessage = "Morate uneti model štampača")]
         public string PrinterModel { get; set; }
+        [Required(ErrorMessage = "Morate uneti serijski broj štampača")]
         public string PrinterSerialNo { get; set; }
         public string PrinterHardwareNo { get; set; }
         //public string PrinterTonerMake { get; set; }

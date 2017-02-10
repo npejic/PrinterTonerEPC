@@ -16,9 +16,17 @@ namespace PrinterTonerEPC.Controllers
         private PrinterTonerContext db = new PrinterTonerContext();
 
         // GET: Owners
-        public ActionResult Index()
+        public ActionResult Index(string searchByOwner)
         {
-            return View(db.Owners.ToList());
+            PrinterTonerContext db = new PrinterTonerContext();
+            var owners = from o in db.Owners
+                        select o;
+
+            if (!String.IsNullOrEmpty(searchByOwner))
+            {
+                owners = owners.Where(o => o.OwnerName.Contains(searchByOwner));
+            }
+            return View(owners.ToList());
         }
 
         // GET: Owners/Details/5
