@@ -19,11 +19,13 @@ namespace PrinterToner.Models
         public string OwnerAddress { get; set; }
         public string OwnerContact { get; set; }
         public string OwnerContactTelephone { get; set; }
+        public string OwnerEmail { get; set; }
         [Required(ErrorMessage = "Morate uneti PIB firme.")]
         public string OwnerPIB { get; set; }
         [Required(ErrorMessage = "Morate uneti matični broj firme.")]
         public string OwnerMatBroj { get; set; }
         public bool OwnerIsInPDV { get; set; }
+        public string Napomena { get; set; }
 
         //public virtual ICollection<Printer> Printers { get; set; }
         public virtual ICollection<Contract> Contracts { get; set; }

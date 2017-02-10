@@ -55,7 +55,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV,Created")] Owner owner)
+        public ActionResult Create([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV, OwnerEmail,Created, Napomena")] Owner owner)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV,Created")] Owner owner)
+        public ActionResult Edit([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV, OwnerEmail,Created, Napomena")] Owner owner)
         {
             if (ModelState.IsValid)
             {
