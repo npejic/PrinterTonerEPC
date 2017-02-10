@@ -24,6 +24,10 @@
             @Html.DisplayNameFor(model => model.Napomena)
         </th>
         <th>
+            Cena
+            @*@Html.DisplayNameFor(model => model.Napomena)*@
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Created)
         </th>
         <th></th>
@@ -42,6 +46,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Napomena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServisPrice)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Created)

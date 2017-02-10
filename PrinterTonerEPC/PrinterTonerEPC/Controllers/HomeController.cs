@@ -12,6 +12,11 @@ namespace PrinterTonerEPC.Controllers
     {
         public ActionResult Index()
         {
+            //TODO: Izračunati ukupan broj EPC štampača na iznajmljivanju
+            //PrinterTonerContext db = new PrinterTonerContext();
+            //var sales = from s in db.Sales
+            //            select s;
+            //sales=sales.Where()
             return View();
         }
 

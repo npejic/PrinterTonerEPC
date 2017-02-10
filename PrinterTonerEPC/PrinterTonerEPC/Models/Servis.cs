@@ -9,6 +9,7 @@ namespace PrinterToner.Models
     {
         public int ServisID { get; set; }
         public DateTime ServisDate { get; set; }
+        public float ServisPrice { get; set; }
 
         public int OwnerID { get; set; }
         public virtual Owner Owner { get; set; }
