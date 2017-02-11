@@ -18,7 +18,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: Sales
         public ActionResult Index()
         {
-            var sales = db.Sales.Include(s => s.Contract).Include(s => s.Printer).Include(s => s.Toner);
+            var sales = db.Sales.Include(s => s.Contract).Include(s => s.Printer);
             return View(sales.ToList());
         }
 
@@ -76,7 +76,6 @@ namespace PrinterTonerEPC.Controllers
 
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
             return View(sale);
         }
 
@@ -95,7 +94,7 @@ namespace PrinterTonerEPC.Controllers
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
+            
             return View(sale);
         }
 
@@ -114,7 +113,7 @@ namespace PrinterTonerEPC.Controllers
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
+           
             return View(sale);
         }
 
@@ -136,7 +135,7 @@ namespace PrinterTonerEPC.Controllers
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
+            
             return View(sale);
         }
 
@@ -155,7 +154,7 @@ namespace PrinterTonerEPC.Controllers
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", sale.TonerID);
+            
             return View(sale);
         }
 

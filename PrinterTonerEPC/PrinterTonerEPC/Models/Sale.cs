@@ -14,8 +14,10 @@ namespace PrinterToner.Models
         public DateTime SaleDate { get; set; }
         public float Price { get; set; }
 
+        //TODO: Izbrisati, ne koriste se
         public LocationTypeOfPrinter LocationOfPrinterIs { get; set; }
         public enum LocationTypeOfPrinter { U_firmi, U_magacinu }
+        //
 
         public int ContractID { get; set; }
         public virtual Contract Contract { get; set; }
@@ -25,8 +27,8 @@ namespace PrinterToner.Models
         public int PrinterID { get; set; }
         public virtual Printer Printer { get; set; }
 
-        public int TonerID { get; set; }
-        public virtual Toner Toner { get; set; }
+        //public int TonerID { get; set; }
+        //public virtual Toner Toner { get; set; }
 
     }
 }
