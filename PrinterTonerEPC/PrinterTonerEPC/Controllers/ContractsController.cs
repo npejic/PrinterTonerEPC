@@ -22,6 +22,14 @@ namespace PrinterTonerEPC.Controllers
             return View(contracts.ToList());
         }
 
+        public ActionResult InactiveOwners()
+        {
+            var inactiveOwners = db.Contracts.Include(c => c.Owner);
+            inactiveOwners = inactiveOwners.Where(i=>i.)
+
+            return View(inactiveOwners.ToList());
+        }
+
         // GET: Contracts/Details/5
         public ActionResult Details(int? id)
         {

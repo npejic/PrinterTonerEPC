@@ -216,6 +216,7 @@
     <Content Include="Views\SaleToners\Details.cshtml" />
     <Content Include="Views\SaleToners\Edit.cshtml" />
     <Content Include="Views\SaleToners\Index.cshtml" />
+    <Content Include="Views\Contracts\InactiveOwners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

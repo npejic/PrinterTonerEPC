@@ -29,6 +29,8 @@ namespace PrinterTonerEPC.Controllers
             return View(owners.ToList());
         }
 
+        
+
         // GET: Owners/Details/5
         public ActionResult Details(int? id)
         {
