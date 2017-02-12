@@ -16,13 +16,12 @@ namespace PrinterTonerEPC.DAL
         public DbSet<Toner> Toners { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Contract> Contracts { get; set; }
-        //public System.Data.Entity.DbSet<PrinterTonerEPC.Models.Printer> Printers { get; set; }
+        public DbSet<Servis> Servis { get; set; }
+        public DbSet<SaleToner> SaleToners { get; set; }
 
         internal void SubmitChanges()
         {
             throw new NotImplementedException();
         }
-
-        public System.Data.Entity.DbSet<PrinterToner.Models.Servis> Servis { get; set; }
     }
 }

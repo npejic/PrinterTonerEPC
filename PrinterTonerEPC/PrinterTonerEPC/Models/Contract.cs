@@ -11,6 +11,8 @@ namespace PrinterToner.Models
     {
         [Key]
         public int ContractID { get; set; }
+        [Required(ErrorMessage = "Morate uneti naziv ugovora.")]
+        [StringLength(100)]
         public string ContractName { get; set; }
         
 

@@ -2,13 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <a href="http://epc.rs/">
-       <img src="~/Images/epc logo.jpg" />
-    </a>
-    @*<p class="lead"></p>
-    <p><a href="http://epc.rs/" class="btn btn-primary btn-lg"> EPC - We print your world! - link to site. &raquo;</a></p>*@
-</div>
+        <div class="jumbotron">
+            <a href="http://epc.rs/">
+                <img src="~/Images/epc logo.jpg" />
+                <h3>@ViewData["CountRentedPrinters"]</h3>
+            </a>
+        </div>
+    
 
 <div class="row">
     <div class="col-md-4">

@@ -11,7 +11,9 @@ namespace PrinterToner.Models
     public class Owner : BaseClass
     {
         public int OwnerID { get; set; }
+        [Index(IsUnique = true)]
         [Required(ErrorMessage = "Morate uneti naziv firme.")]
+        [StringLength(100)]
         public string OwnerName { get; set; }
         [Required(ErrorMessage = "Morate uneti telefon firme.")]
         public string OwnerTelephone { get; set; }
@@ -21,7 +23,11 @@ namespace PrinterToner.Models
         public string OwnerContactTelephone { get; set; }
         public string OwnerEmail { get; set; }
         [Required(ErrorMessage = "Morate uneti PIB firme.")]
+        [Index(IsUnique = true)]
+        [StringLength(100)]
         public string OwnerPIB { get; set; }
+        [Index(IsUnique = true)]
+        [StringLength(100)]
         [Required(ErrorMessage = "Morate uneti matični broj firme.")]
         public string OwnerMatBroj { get; set; }
         public bool OwnerIsInPDV { get; set; }
