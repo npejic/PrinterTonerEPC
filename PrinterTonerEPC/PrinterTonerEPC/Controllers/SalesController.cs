@@ -56,7 +56,7 @@ namespace PrinterTonerEPC.Controllers
         {
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName");
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo");
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
+            
             return View();
         }
 
