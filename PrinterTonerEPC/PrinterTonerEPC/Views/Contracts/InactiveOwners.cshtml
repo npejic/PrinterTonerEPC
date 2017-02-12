@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Istekli ugovori</h2>
+<h3>Današnji datum @DateTime.Now</h3>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -24,11 +22,10 @@
             @Html.DisplayNameFor(model => model.ContactDuration)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractComplete)
+            Ugovor istekao
+            @*@Html.DisplayNameFor(model => model.ContractDate)*@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -47,16 +44,14 @@
             @Html.DisplayFor(modelItem => item.ContactDuration)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContractComplete)
+            @Html.DisplayFor(modelItem => item.ContractDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
+        <
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ContractID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ContractID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ContractID })
-        </td>
+        </td>*@
     </tr>
 }
 
