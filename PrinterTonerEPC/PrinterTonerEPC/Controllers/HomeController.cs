@@ -21,6 +21,12 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
+        public ActionResult Help()
+        {
+            
+            return View();
+        }
+
         public ActionResult ReportByOwner(string searchByOwner)
         {
             PrinterTonerContext db = new PrinterTonerContext();

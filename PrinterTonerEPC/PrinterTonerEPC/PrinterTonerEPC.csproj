@@ -148,6 +148,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\epc logo manji.jpg" />
     <Content Include="Images\epc logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -224,6 +225,7 @@
     <Content Include="Views\PrinterTonerCompatibilities\Details.cshtml" />
     <Content Include="Views\PrinterTonerCompatibilities\Edit.cshtml" />
     <Content Include="Views\PrinterTonerCompatibilities\Index.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
