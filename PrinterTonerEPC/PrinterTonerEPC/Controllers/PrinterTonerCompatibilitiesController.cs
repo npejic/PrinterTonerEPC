@@ -22,7 +22,7 @@ namespace PrinterTonerEPC.Controllers
 
             if (!String.IsNullOrEmpty(searchByPrinter))
             {
-                printerTonerCompatibilitys = printerTonerCompatibilitys.Where(o => o.Printer.PrinterSerialNo.Contains(searchByPrinter));
+                printerTonerCompatibilitys = printerTonerCompatibilitys.Where(o => o.Printer.PrinterModel.Contains(searchByPrinter));
             }
 
             return View(printerTonerCompatibilitys.ToList());
