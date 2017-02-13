@@ -18,6 +18,7 @@ namespace PrinterTonerEPC.DAL
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Servis> Servis { get; set; }
         public DbSet<SaleToner> SaleToners { get; set; }
+        public DbSet<PrinterTonerCompatibility> PrinterTonerCompatibilitys { get; set; }
 
         internal void SubmitChanges()
         {

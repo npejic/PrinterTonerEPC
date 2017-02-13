@@ -14,12 +14,12 @@ namespace PrinterToner.Models
         [StringLength(100)]
         public string PrinterInternalNo { get; set; }
         [Required(ErrorMessage = "Morate uneti naziv proizvođača štampača")]
-        [Index("Manufaturer_Model", 1, IsUnique = true)]
+        //[Index("Manufaturer_Model", 1, IsUnique = true)]
         [StringLength(100)]
         public string PrinterManufacturer { get; set; }
         [Required(ErrorMessage = "Morate uneti model štampača")]
         //[Index(IsUnique = true)]
-        [Index("Manufaturer_Model", 2, IsUnique = true)]
+        //[Index("Manufaturer_Model", 2, IsUnique = true)]
         [StringLength(100)]
         public string PrinterModel { get; set; }
         [Required(ErrorMessage = "Morate uneti serijski broj štampača")]
@@ -37,5 +37,8 @@ namespace PrinterToner.Models
 
         public virtual ICollection<Sale> Sales { get; set; }
         public virtual ICollection<Servis> Servis { get; set; }
+
+        public virtual ICollection<PrinterTonerCompatibility> PrinterTonerCompatibilitys { get; set; }
+        
     }
 }

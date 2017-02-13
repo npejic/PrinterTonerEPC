@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PrinterToner.Models.PrinterTonerCompatibility>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Spisak svih veza štampača i tonera</h2>
+
+@using (Html.BeginForm())
+{ <p> Štampač: @Html.TextBox("searchByPrinter") <input type="submit" value="Search" /></p> }
+
+<p>
+    @Html.ActionLink("Unesi novu vezu", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Model štampača@*@Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)*@
+        </th>
+        <th>
+            Model tonera@*@Html.DisplayNameFor(model => model.Toner.TonerModel)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toner.TonerModel)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.PrinterTonerCompatibilityID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.PrinterTonerCompatibilityID })
+        </td>
+    </tr>
+}
+
+</table>
