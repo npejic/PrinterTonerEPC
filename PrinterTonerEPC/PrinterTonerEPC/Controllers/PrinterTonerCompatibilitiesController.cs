@@ -46,6 +46,10 @@ namespace PrinterTonerEPC.Controllers
         // GET: PrinterTonerCompatibilities/Create
         public ActionResult Create()
         {
+            //var printerModelNoDuplicate =
+            //   (from dbo in db.Printers select dbo.PrinterModel).Distinct();
+            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel");
+            
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel");
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
             return View();
@@ -65,6 +69,12 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
 
+            //var printerModelNoDuplicate = db.Printers;
+
+            //printerModelNoDuplicate =
+            //   (from dbo in db.Printers select dbo.PrinterModel).Distinct();
+            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel", printerTonerCompatibility.PrinterID);
+            
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel", printerTonerCompatibility.PrinterID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", printerTonerCompatibility.TonerID);
             return View(printerTonerCompatibility);
