@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista svih firmi</h2>
 
 @using (Html.BeginForm())
-{ <p> Vlasnik: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
+{ <p> Firma: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
 
 
 <p>
@@ -16,35 +16,35 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerName)
+            Vlasnik@*@Html.DisplayNameFor(model => model.OwnerName)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerTelephone)
+            Telefon@*@Html.DisplayNameFor(model => model.OwnerTelephone)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerAddress)
+            Adresa@*@Html.DisplayNameFor(model => model.OwnerAddress)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerContact)
+            Kontakt osoba@*@Html.DisplayNameFor(model => model.OwnerContact)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerContactTelephone)
+            Telefon kontakt osobe@*@Html.DisplayNameFor(model => model.OwnerContactTelephone)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerEmail)
+            Email@*@Html.DisplayNameFor(model => model.OwnerEmail)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerPIB)
+            PIB@*@Html.DisplayNameFor(model => model.OwnerPIB)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerMatBroj)
+            Matični broj@*@Html.DisplayNameFor(model => model.OwnerMatBroj)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerIsInPDV)
+            Firma u PDV-u@*@Html.DisplayNameFor(model => model.OwnerIsInPDV)*@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
+        @*<th>
+            Kreirano
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Napomena)
         </th>
@@ -80,16 +80,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.OwnerIsInPDV)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Created)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Napomena)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OwnerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OwnerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OwnerID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.OwnerID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.OwnerID }) |*@
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.OwnerID })
         </td>
     </tr>
 }

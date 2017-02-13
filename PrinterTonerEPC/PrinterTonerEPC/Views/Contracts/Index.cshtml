@@ -4,34 +4,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Spisak ugovora</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Unesi novi ugovor", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Owner.OwnerName)
+            Firma@*@Html.DisplayNameFor(model => model.Owner.OwnerName)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractName)
+            Ugovor@*@Html.DisplayNameFor(model => model.ContractName)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractDate)
+            Datum ugovora@*@Html.DisplayNameFor(model => model.ContractDate)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractIs)
+            Tip ugovora@*@Html.DisplayNameFor(model => model.ContractIs)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactDuration)
+            Trajanje ugovora@*@Html.DisplayNameFor(model => model.ContactDuration)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractComplete)
+            Dokumentacija komplentna@*@Html.DisplayNameFor(model => model.ContractComplete)*@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -44,7 +42,8 @@
             @Html.DisplayFor(modelItem => item.ContractName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContractDate)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ContractDate))
+            @*@Html.DisplayFor(modelItem => item.ContractDate)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ContractIs)
@@ -55,13 +54,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.ContractComplete)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContractID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContractID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContractID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.ContractID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.ContractID })
         </td>
     </tr>
 }

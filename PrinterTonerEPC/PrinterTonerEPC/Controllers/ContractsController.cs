@@ -31,7 +31,7 @@ namespace PrinterTonerEPC.Controllers
             {
                 o.ContractDate = o.ContractDate.AddMonths(o.ContactDuration);
             }
-           // inactiveOwners = inactiveOwners.Where(a => a.ContractDate < DateTime.Now && a.ContactDuration!=0);
+            inactiveOwners = inactiveOwners.Where(a => a.ContractDate < DateTime.Now && a.ContactDuration != 0);
             //                     where i.ContractDate.AddMonths(i.ContactDuration)<DateTime.Now
             //            select i;
 

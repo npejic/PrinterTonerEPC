@@ -16,9 +16,15 @@ namespace PrinterTonerEPC.Controllers
         private PrinterTonerContext db = new PrinterTonerContext();
 
         // GET: Servis
-        public ActionResult Index()
+        public ActionResult Index(string searchBySerialNo)
         {
             var servis = db.Servis.Include(s => s.Owner).Include(s => s.Printer);
+
+            if (!String.IsNullOrEmpty(searchBySerialNo))
+            {
+                servis = servis.Where(o => o.Printer.PrinterSerialNo.Contains(searchBySerialNo));
+            }
+
             return View(servis.ToList());
         }
 
@@ -41,7 +47,7 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo");
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
             return View();
         }
 
@@ -60,7 +66,7 @@ namespace PrinterTonerEPC.Controllers
             }
 
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", servis.PrinterID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo", servis.PrinterID);
             return View(servis);
         }
 
@@ -77,7 +83,7 @@ namespace PrinterTonerEPC.Controllers
                 return HttpNotFound();
             }
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", servis.PrinterID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo", servis.PrinterID);
             return View(servis);
         }
 
@@ -95,7 +101,7 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", servis.PrinterID);
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo", servis.PrinterID);
             return View(servis);
         }
 

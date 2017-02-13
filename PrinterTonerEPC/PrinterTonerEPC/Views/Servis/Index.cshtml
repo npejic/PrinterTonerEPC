@@ -4,18 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Spisak svih servisnih radnji</h2>
+
+@using (Html.BeginForm())
+{ <p> Serijski broj: @Html.TextBox("searchBySerialNo") <input type="submit" value="Search" /></p> }
+
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Unesi novi", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Owner.OwnerName)
+            Vlasnik
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)
+            Serijski broj
+            @*@Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ServisDate)
@@ -25,11 +30,8 @@
         </th>
         <th>
             Cena
-            @*@Html.DisplayNameFor(model => model.Napomena)*@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -39,10 +41,11 @@
             @Html.DisplayFor(modelItem => item.Owner.OwnerName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Printer.PrinterInternalNo)
+            @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ServisDate)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ServisDate))
+            @*@Html.DisplayFor(modelItem => item.ServisDate)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Napomena)
@@ -50,13 +53,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.ServisPrice)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ServisID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ServisID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ServisID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.ServisID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.ServisID })
         </td>
     </tr>
 }

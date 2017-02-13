@@ -5,7 +5,7 @@
 }
 
 <h2>Istekli ugovori</h2>
-<h3>Današnji datum @DateTime.Now</h3>
+<h3>Današnji datum @DateTime.Now.ToShortDateString()</h3>
 
 <table class="table">
     <tr>
@@ -44,7 +44,8 @@
             @Html.DisplayFor(modelItem => item.ContactDuration)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContractDate)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ContractDate))
+            @*@Html.DisplayFor(modelItem => item.ContractDate)*@
         </td>
         <
         @*<td>
