@@ -23,6 +23,9 @@
             @*@Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)*@
         </th>
         <th>
+            Model štampača
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ServisDate)
         </th>
         <th>
@@ -42,6 +45,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Printer.PrinterModel)
         </td>
         <td>
             @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ServisDate))

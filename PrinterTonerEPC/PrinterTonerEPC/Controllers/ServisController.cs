@@ -18,11 +18,11 @@ namespace PrinterTonerEPC.Controllers
         // GET: Servis
         public ActionResult Index(string searchBySerialNo)
         {
-            var servis = db.Servis.Include(s => s.Owner).Include(s => s.Printer);
+            var servis = db.Servis.Include(s => s.Owner).Include(s => s.Printer).OrderByDescending(s=>s.ServisDate);
 
             if (!String.IsNullOrEmpty(searchBySerialNo))
             {
-                servis = servis.Where(o => o.Printer.PrinterSerialNo.Contains(searchBySerialNo));
+                servis = servis.Where(o => o.Printer.PrinterSerialNo.Contains(searchBySerialNo)).OrderByDescending(s => s.ServisDate);
             }
 
             return View(servis.ToList());
