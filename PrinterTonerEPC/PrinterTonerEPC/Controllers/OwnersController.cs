@@ -20,11 +20,17 @@ namespace PrinterTonerEPC.Controllers
         {
             PrinterTonerContext db = new PrinterTonerContext();
             var owners = from o in db.Owners
-                        select o;
+                         orderby o.OwnerName
+                         select o;
 
             if (!String.IsNullOrEmpty(searchByOwner))
             {
-                owners = owners.Where(o => o.OwnerName.Contains(searchByOwner));
+                //owners = from o in db.Owners
+                //         where o.OwnerName.Contains(searchByOwner)
+                //         orderby o.OwnerName
+                //         select o;
+
+                owners = owners.Where(o => o.OwnerName.Contains(searchByOwner)).OrderBy(o=>o.OwnerName);
             }
             return View(owners.ToList());
         }
