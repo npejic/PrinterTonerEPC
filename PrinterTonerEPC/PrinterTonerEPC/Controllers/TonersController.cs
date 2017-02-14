@@ -51,7 +51,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,Created")] Toner toner)
+        public ActionResult Create([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerProductNo,Created")] Toner toner)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,Created")] Toner toner)
+        public ActionResult Edit([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerProductNo,Created")] Toner toner)
         {
             if (ModelState.IsValid)
             {
