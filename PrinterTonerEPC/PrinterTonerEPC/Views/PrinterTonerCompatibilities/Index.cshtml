@@ -7,7 +7,10 @@
 <h2>Spisak svih veza štampača i tonera</h2>
 
 @using (Html.BeginForm())
-{ <p> Štampač: @Html.TextBox("searchByPrinter") <input type="submit" value="Search" /></p> }
+{ <p> Model štampača: @Html.TextBox("searchByPrinter") <input type="submit" value="Search" /></p> }
+
+@using (Html.BeginForm())
+{ <p> Model tonera  : @Html.TextBox("searchByToner") <input type="submit" value="Search" /></p> }
 
 <p>
     @Html.ActionLink("Unesi novu vezu", "Create")

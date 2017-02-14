@@ -18,6 +18,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: Toners
         public ActionResult Index()
         {
+            
             return View(db.Toners.ToList());
         }
 
@@ -51,6 +52,7 @@ namespace PrinterTonerEPC.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.Toners.OrderBy(t=>t.TonerModel);
                 db.Toners.Add(toner);
                 db.SaveChanges();
                 return RedirectToAction("Index");
