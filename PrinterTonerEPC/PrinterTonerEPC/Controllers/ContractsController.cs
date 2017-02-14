@@ -31,7 +31,7 @@ namespace PrinterTonerEPC.Controllers
             {
                 o.ContractDate = o.ContractDate.AddMonths(o.ContactDuration);
             }
-            inactiveOwners = inactiveOwners.Where(a => a.ContractDate < DateTime.Now && a.ContactDuration != 0);
+            inactiveOwners = inactiveOwners.Where(a => a.ContractDate < DateTime.Now);//TODO: && a.ContractActive == false);
             //                     where i.ContractDate.AddMonths(i.ContactDuration)<DateTime.Now
             //            select i;
 
@@ -65,7 +65,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,Created")] Contract contract)
+        public ActionResult Create([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,ContractActive,Created")] Contract contract)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,Created")] Contract contract)
+        public ActionResult Edit([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,ContractActive,Created")] Contract contract)
         {
             if (ModelState.IsValid)
             {

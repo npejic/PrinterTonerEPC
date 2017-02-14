@@ -29,6 +29,9 @@
         <th>
             Dokumentacija komplentna@*@Html.DisplayNameFor(model => model.ContractComplete)*@
         </th>
+        <th>
+            Ugovor aktivan
+        </th>
        
         <th></th>
     </tr>
@@ -53,6 +56,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ContractComplete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractActive)
         </td>
         
         <td>
