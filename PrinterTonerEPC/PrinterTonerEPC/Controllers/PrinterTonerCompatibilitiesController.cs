@@ -18,17 +18,17 @@ namespace PrinterTonerEPC.Controllers
         // GET: PrinterTonerCompatibilities
         public ActionResult Index(string searchByPrinter, string searchByToner)
         {
-            var printerTonerCompatibilitys = db.PrinterTonerCompatibilitys.Include(p => p.Printer).Include(p => p.Toner);
+            var printerTonerCompatibilitys = db.PrinterTonerCompatibilitys.Include(p => p.Printer).Include(p => p.Toner).OrderBy(p=>p.Printer.PrinterManufacturer).ThenBy(p=>p.Printer.PrinterModel);
 
             if (!String.IsNullOrEmpty(searchByPrinter))
             {
-                printerTonerCompatibilitys = printerTonerCompatibilitys.Where(o => o.Printer.PrinterModel.Contains(searchByPrinter));
+                printerTonerCompatibilitys = printerTonerCompatibilitys.Where(o => o.Printer.PrinterModel.Contains(searchByPrinter)).OrderBy(p => p.Printer.PrinterManufacturer).ThenBy(p => p.Printer.PrinterModel);
             }
 
 
             if (!String.IsNullOrEmpty(searchByToner))
             {
-                printerTonerCompatibilitys = printerTonerCompatibilitys.Where(o => o.Toner.TonerModel.Contains(searchByToner));
+                printerTonerCompatibilitys = printerTonerCompatibilitys.Where(o => o.Toner.TonerModel.Contains(searchByToner)).OrderBy(p => p.Printer.PrinterManufacturer).ThenBy(p => p.Printer.PrinterModel);
             }
 
             return View(printerTonerCompatibilitys.ToList());
