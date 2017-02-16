@@ -18,7 +18,8 @@ namespace PrinterTonerEPC.Controllers
         // GET: Printers
         public ActionResult Index()
         {
-            return View(db.Printers.ToList());
+            var sortedPrinters = db.Printers.OrderBy(p => p.PrinterManufacturer).ThenBy(p => p.PrinterModel).ThenBy(p => p.PrinterSerialNo);
+            return View(sortedPrinters.ToList());
         }
 
         // GET: Printers/Details/5

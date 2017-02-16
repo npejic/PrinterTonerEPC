@@ -4,37 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Spisak svih štampača</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Unesi novi", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PrinterInternalNo)
+            Interni broj
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrinterManufacturer)
+            Proizvođač
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrinterModel)
+            Model
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrinterSerialNo)
+            Serijski broj
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrinterHardwareNo)
+            Broj hardvera
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrinterDecommissioned)
+            Rashodovan
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsEPCprinter)
+            EPC Štampač
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -61,13 +59,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsEPCprinter)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PrinterID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PrinterID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PrinterID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.PrinterID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.PrinterID })
         </td>
     </tr>
 }

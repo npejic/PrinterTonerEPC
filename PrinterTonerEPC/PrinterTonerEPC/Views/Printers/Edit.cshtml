@@ -4,21 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Printer</h4>
+        <h4>Izmena štampača u bazi</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PrinterID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterInternalNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterInternalNo, "Interni broj", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PrinterInternalNo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PrinterInternalNo, "", new { @class = "text-danger" })
@@ -26,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterManufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterManufacturer, "Proizvođač", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PrinterManufacturer, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PrinterManufacturer, "", new { @class = "text-danger" })
@@ -34,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterModel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterModel, "Model", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PrinterModel, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PrinterModel, "", new { @class = "text-danger" })
@@ -42,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterSerialNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterSerialNo, "Serijski broj", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PrinterSerialNo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PrinterSerialNo, "", new { @class = "text-danger" })
@@ -50,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterHardwareNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterHardwareNo, "Broj hardvera", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PrinterHardwareNo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PrinterHardwareNo, "", new { @class = "text-danger" })
@@ -58,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterDecommissioned, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterDecommissioned, "Rashodovan", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.PrinterDecommissioned)
@@ -68,7 +66,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsEPCprinter, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsEPCprinter, "EPC štampač", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsEPCprinter)
@@ -77,24 +75,24 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Sačuvaj" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Povratak", "Index")
 </div>
 
 @section Scripts {
