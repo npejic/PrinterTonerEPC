@@ -4,36 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Kretanje štampača</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Unesi novi", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Contract.ContractName)
+            Ugovor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.SaleDate)
+            Serijski broj
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        @*//TODO:*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.LocationOfPrinterIs)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.AlternateContract)
+            Datum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Created)
+            Cena
         </th>
+        <th>
+            Novi ugovor
+        </th>
+        
         <th></th>
     </tr>
 
@@ -43,29 +36,22 @@
             @Html.DisplayFor(modelItem => item.Contract.ContractName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Printer.PrinterInternalNo)
+            @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
         </td>
-        
         <td>
-            @Html.DisplayFor(modelItem => item.SaleDate)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.SaleDate))
+            @*@Html.DisplayFor(modelItem => item.SaleDate)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        @*//TODO: Izbrisati*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.LocationOfPrinterIs)
-        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.AlternateContract)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SaleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SaleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SaleID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.SaleID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.SaleID })
         </td>
     </tr>
 }

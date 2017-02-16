@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Unos novog kretanja štampača</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,11 +12,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Sale</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.SaleDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SaleDate, "Datum", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SaleDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SaleDate, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Price, "Cena", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -41,7 +41,7 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ContractID, "ContractID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ContractID, "Ugovor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ContractID", null, string.Empty, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ContractID, "", new { @class = "text-danger" })
@@ -49,7 +49,7 @@
         </div>
 
         
-        @*AlternateContract ne treba da bude vidljivo pri prvom unosu Prodaje za dati Štampač/Toner, već će se ova promenljiva menjati iz View-a*@
+        @*//TODO: AlternateContract ne treba da bude vidljivo pri prvom unosu Prodaje za dati Štampač/Toner, već će se ova promenljiva menjati iz View-a*@
         
         @*<div class="form-group">
             @Html.LabelFor(model => model.AlternateContract, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -60,7 +60,7 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrinterID, "PrinterID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrinterID, "Štampač", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PrinterID", null, string.Empty, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PrinterID, "", new { @class = "text-danger" })
@@ -71,14 +71,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Sačuvaj" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Povratak", "Index")
 </div>
 
 @section Scripts {

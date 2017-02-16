@@ -18,19 +18,18 @@ namespace PrinterTonerEPC.Controllers
         // GET: Sales
         public ActionResult Index()
         {
-            var sales = db.Sales.Include(s => s.Contract).Include(s => s.Printer);
+            var sales = db.Sales.Include(s => s.Contract).Include(s => s.Printer).OrderBy(s=>s.Contract.ContractName).ThenBy(s=>s.SaleDate);
             return View(sales.ToList());
         }
 
         public ActionResult SalesReportByOwner(string searchByOwner)
         {
             PrinterTonerContext db = new PrinterTonerContext();
-            var sales = from s in db.Sales
-                        select s;
+            var sales = db.Sales.OrderBy(s=>s.Contract.ContractName).ThenBy(s=>s.SaleDate);
 
             if (!string.IsNullOrEmpty(searchByOwner))
             {
-                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner));// && s.printer.isepcprinter==true);
+                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.SaleDate);// && s.printer.isepcprinter==true);
             }
 
             return View(sales.ToList());

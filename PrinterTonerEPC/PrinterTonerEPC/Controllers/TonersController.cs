@@ -18,9 +18,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: Toners
         public ActionResult Index()
         {
-            var toners = from o in db.Toners
-                         orderby o.TonerModel
-                         select o;
+            var toners = db.Toners.OrderBy(t => t.TonerModel).ThenBy(t=>t.TonerYield);
 
             return View(toners.ToList());
         }

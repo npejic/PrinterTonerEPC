@@ -4,28 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Spisak svih tonera</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Unesi novi toner", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TonerModel)
+            Model
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TonerIsOriginal)
+            Orginal
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TonerYield)
+            Pp. br. strana
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TonerProductNo)
+            Product No
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -47,9 +45,8 @@
             @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TonerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TonerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TonerID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.TonerID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.TonerID })
         </td>
     </tr>
 }
