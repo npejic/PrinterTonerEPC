@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            Firma
+        </th>
+        <th>
             Ugovor
         </th>
         <th>
@@ -28,6 +31,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contract.Owner.OwnerName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Contract.ContractName)
         </td>

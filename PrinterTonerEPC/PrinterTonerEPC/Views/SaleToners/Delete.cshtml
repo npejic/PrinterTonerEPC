@@ -4,15 +4,16 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+@*<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete this?</h3>*@
 <div>
-    <h4>SaleToner</h4>
+    <h4>Brisanje kretanja tonera</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Contract.ContractName)
+            Ugovor
+            @*@Html.DisplayNameFor(model => model.Contract.ContractName)*@
         </dt>
 
         <dd>
@@ -20,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Toner.TonerModel)
+            Toner
         </dt>
 
         <dd>
@@ -28,15 +29,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SaleTonerDate)
+           Datum
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SaleTonerDate)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", Model.SaleTonerDate))
+            @*@Html.DisplayFor(model => model.SaleTonerDate)*@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TonerPrice)
+            Cena
         </dt>
 
         <dd>
@@ -49,8 +51,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Izbriši" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak", "Index")
         </div>
     }
 </div>

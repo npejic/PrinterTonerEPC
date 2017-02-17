@@ -18,9 +18,22 @@ namespace PrinterTonerEPC.Controllers
         // GET: SaleToners
         public ActionResult Index()
         {
-            var saleToners = db.SaleToners.Include(s => s.Contract).Include(s => s.Toner);
+            var saleToners = db.SaleToners.Include(s => s.Contract).Include(s => s.Toner).OrderBy(s=>s.Contract.ContractName).ThenBy(s=>s.Toner.TonerModel).ThenBy(s=>s.SaleTonerDate);
             return View(saleToners.ToList());
         }
+
+        //LastTonerSale
+        public ActionResult LastTonerSale()
+        {
+            //DistinctBy(x => new { Min=Math.Min(x.from, x.to), Max=Math.Max(x.from, x.to) })
+
+            //var lastTonerSale = db.SaleToners.Include(s => s.Contract).Include(s => s.Toner).OrderBy(s => s.Contract.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenByDescending(s => s.SaleTonerDate);
+
+            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(g => g.FirstOrDefault());
+
+            return View(lastTonerSale.ToList());
+        }
+
 
         // GET: SaleToners/Details/5
         public ActionResult Details(int? id)

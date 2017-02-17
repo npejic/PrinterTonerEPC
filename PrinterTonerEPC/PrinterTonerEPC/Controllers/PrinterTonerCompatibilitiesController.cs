@@ -52,8 +52,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: PrinterTonerCompatibilities/Create
         public ActionResult Create()
         {
-            //var printerModelNoDuplicate =
-            //   (from dbo in db.Printers select dbo.PrinterModel).Distinct();
+            //var printerModelNoDuplicate = db.Printers.Select(s=>s.PrinterModel).Distinct();          
             //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel");
             
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel");
