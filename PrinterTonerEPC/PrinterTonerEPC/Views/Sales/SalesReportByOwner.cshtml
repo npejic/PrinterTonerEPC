@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lokacija štampača po ugovorima</h2>
 
 @using (Html.BeginForm())
 { <p> Vlasnik: @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
@@ -33,25 +33,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Contract.ContractName)
+            Ugovor @*@Html.DisplayNameFor(model => model.Contract.ContractName)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)
+            Štampač @*@Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)*@
         </th>
         
         <th>
-            @Html.DisplayNameFor(model => model.SaleDate)
+            Datum @*@Html.DisplayNameFor(model => model.SaleDate)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Cena @*@Html.DisplayNameFor(model => model.Price)*@
         </th>
       
         <th>
-            @Html.DisplayNameFor(model => model.AlternateContract)
+            Novi ugovor @*@Html.DisplayNameFor(model => model.AlternateContract)*@
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Created)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -62,29 +62,28 @@
                 @Html.DisplayFor(modelItem => item.Contract.ContractName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Printer.PrinterInternalNo)
+                @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
             </td>
-            
             <td>
-                @Html.DisplayFor(modelItem => item.SaleDate)
+                @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.SaleDate))
+                @*@Html.DisplayFor(modelItem => item.SaleDate)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-           
             <td>
                 @Html.DisplayFor(modelItem => item.AlternateContract)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Created)
-            </td>
+            </td>*@
 
-            @*//TODO: Izbrisati*@
+            
 
             <td>
-                @Html.ActionLink("Edit", "EditSalesReportByOwner", new { id = item.SaleID }) |
+                @Html.ActionLink("Izmeni", "EditSalesReportByOwner", new { id = item.SaleID }) @*|*@
                 @*@Html.ActionLink("Details", "Details", new { id = item.SaleID }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.SaleID })
+                @*@Html.ActionLink("Izbriši", "Delete", new { id = item.SaleID })*@
             </td>
         </tr>
     }
