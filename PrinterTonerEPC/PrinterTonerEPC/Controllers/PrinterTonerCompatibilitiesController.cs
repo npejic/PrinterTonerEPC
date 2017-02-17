@@ -52,9 +52,9 @@ namespace PrinterTonerEPC.Controllers
         // GET: PrinterTonerCompatibilities/Create
         public ActionResult Create()
         {
-            //var printerModelNoDuplicate = db.Printers.Select(s=>s.PrinterModel).Distinct();          
-            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel");
-            
+            //var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());//.OrderBy(s => s.PrinterModel).Select(s => new { s.PrinterID, s.PrinterModel }).Distinct();
+            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate);
+
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel");
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
             return View();
@@ -74,12 +74,9 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
 
-            //var printerModelNoDuplicate = db.Printers;
+            //var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());//.OrderBy(s => s.PrinterModel).Select(s => new { s.PrinterID, s.PrinterModel }).Distinct();
+            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate);
 
-            //printerModelNoDuplicate =
-            //   (from dbo in db.Printers select dbo.PrinterModel).Distinct();
-            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel", printerTonerCompatibility.PrinterID);
-            
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel", printerTonerCompatibility.PrinterID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", printerTonerCompatibility.TonerID);
             return View(printerTonerCompatibility);

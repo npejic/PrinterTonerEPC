@@ -29,7 +29,13 @@ namespace PrinterTonerEPC.Controllers
 
             //var lastTonerSale = db.SaleToners.Include(s => s.Contract).Include(s => s.Toner).OrderBy(s => s.Contract.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenByDescending(s => s.SaleTonerDate);
 
-            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(g => g.FirstOrDefault());
+            ///ovo je radilo nekako
+            //var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(g => g.FirstOrDefault());//.Select(g => g.Max(t=>t.SaleTonerDate));
+
+            ///OVO RADI!!! treba samo da zanemari koji j ugovor u pitanju i prikaže samo vlasnika
+            //var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(s=>s.OrderByDescending(x=>x.SaleTonerDate).FirstOrDefault());
+
+            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Contract.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s=>s.Contract.Owner.OwnerName).ThenBy(s=>s.Toner.TonerModel);
 
             return View(lastTonerSale.ToList());
         }

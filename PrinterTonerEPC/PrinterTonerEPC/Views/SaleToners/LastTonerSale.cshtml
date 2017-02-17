@@ -6,9 +6,9 @@
 
 <h2>Sva kretanja tonera</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Unesi novo", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -47,11 +47,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.TonerPrice)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SaleTonerID }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.SaleTonerID }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.SaleTonerID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.SaleTonerID })
-        </td>
+        </td>*@
     </tr>
 }
 
