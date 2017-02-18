@@ -22,18 +22,23 @@ namespace PrinterTonerEPC.Controllers
             return View(contracts.ToList());
         }
 
+        /// <summary>
+        /// Report for contracts that are no longer active
+        /// </summary>
+        /// <returns>sends inactiveOwners list to View</returns>
         public ActionResult InactiveOwners()
         {
             PrinterTonerContext db = new PrinterTonerContext();
 
             var inactiveOwners = from i in db.Contracts select i;
-            foreach (var o in inactiveOwners)
-            {
-                o.ContractDate = o.ContractDate.AddMonths(o.ContactDuration);
-            }
-            inactiveOwners = inactiveOwners.Where(a => a.ContractDate < DateTime.Now);//TODO: && a.ContractActive == false);
-            //                     where i.ContractDate.AddMonths(i.ContactDuration)<DateTime.Now
-            //            select i;
+            var Today= DateTime.Now.Date; //.Date is not suported by LINQ
+            //foreach (var o in inactiveOwners)
+            //{
+            //    o.ContractDate = o.ContractDate.AddMonths(o.ContactDuration);
+            //}
+            //inactiveOwners = inactiveOwners.Where(a => a.ContractDate < Today);//TODO: && a.ContractActive == false);
+            
+            inactiveOwners = inactiveOwners.Where(a=> a.ContractActive == false && DbFunctions.AddMonths(a.ContractDate,a.ContactDuration) < Today );
 
             return View(inactiveOwners.ToList());
         }
