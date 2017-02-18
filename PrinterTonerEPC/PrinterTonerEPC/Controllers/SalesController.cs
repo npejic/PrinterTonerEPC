@@ -108,7 +108,7 @@ namespace PrinterTonerEPC.Controllers
             {
                 db.Entry(sale).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("SalesReportByOwner");
             }
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", sale.ContractID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterInternalNo", sale.PrinterID);
