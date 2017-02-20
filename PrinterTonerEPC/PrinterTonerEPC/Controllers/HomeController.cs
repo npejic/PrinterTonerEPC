@@ -79,7 +79,7 @@ namespace PrinterTonerEPC.Controllers
         //GET
         public ActionResult Login()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
         }
@@ -87,8 +87,10 @@ namespace PrinterTonerEPC.Controllers
         [HttpPost]
         public ActionResult Login(string userName, string password)
         {
-            if ("admin".Equals(userName) && "123".Equals(password)) 
+            if ("simic".Equals(userName) && "ognjen".Equals(password)) 
             {
+                Session["user"] = "Ognjen";
+                return RedirectToAction("Index", "Home");
             }
 
             return View();
