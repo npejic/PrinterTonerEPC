@@ -228,6 +228,7 @@
     <Content Include="Views\PrinterTonerCompatibilities\Index.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\SaleToners\LastTonerSale.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

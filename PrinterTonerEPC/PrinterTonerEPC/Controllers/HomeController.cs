@@ -56,34 +56,7 @@ namespace PrinterTonerEPC.Controllers
                 db.SubmitChanges();
             }
 
-            //
-            //foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName == searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
-            //{
-            //    salesModified.AlternateContract = ModifyAlternateContract;
-            //}
-            //db.SubmitChanges();
-
-
-            //var salesModified = db.Sales;
-            //if (!String.IsNullOrEmpty(ModifyAlternateContract))
-            //{
-            //    foreach (string AlternateContract in salesModified)
-            //    {
-
-            //    }
-            //}
-
-            //Modifying multiple rows
-            //using (db)
-            //{
-
-            //    foreach (var salesModified in db.Sales.Where(x=> x.Contract.Owner.OwnerName== searchByOwner))//.Where(x => x.LocationOfPrinterIs.Equals("U_firmi")).ToList())
-            //    {
-            //        salesModified.AlternateContract = ModifyAlternateContract;
-            //    }
-            //    db.SubmitChanges();
-            //}
-
+           
 
             return View(sales.ToList());
         }
@@ -98,6 +71,25 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
+        //GET
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Login(string userName, string password)
+        {
+            if ("admin".Equals(userName) && "123".Equals(password)) 
+            {
+            }
 
             return View();
         }
