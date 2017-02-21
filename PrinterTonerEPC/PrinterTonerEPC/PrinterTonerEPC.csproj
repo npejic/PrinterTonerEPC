@@ -139,6 +139,7 @@
     <Compile Include="Models\SaleToner.cs" />
     <Compile Include="Models\Servis.cs" />
     <Compile Include="Models\Toner.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

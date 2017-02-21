@@ -20,6 +20,8 @@ namespace PrinterTonerEPC.DAL
         public DbSet<SaleToner> SaleToners { get; set; }
         public DbSet<PrinterTonerCompatibility> PrinterTonerCompatibilitys { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         internal void SubmitChanges()
         {
             throw new NotImplementedException();
