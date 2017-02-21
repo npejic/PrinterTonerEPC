@@ -15,6 +15,7 @@ namespace PrinterTonerEPC.Controllers
             //TODO: Izračunati ukupan broj EPC štampača na iznajmljivanju
             PrinterTonerContext db = new PrinterTonerContext();
             var sales = from s in db.Sales
+                        where s.Printer.IsEPCprinter== true
                         select s;
             var CountRentedPrinters = sales.Count();
             ViewData["CountRentedPrinters"] = CountRentedPrinters;
@@ -27,6 +28,7 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
+        //TODO: izbrisati
         public ActionResult ReportByOwner(string searchByOwner)
         {
             PrinterTonerContext db = new PrinterTonerContext();
