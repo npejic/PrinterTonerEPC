@@ -52,10 +52,13 @@ namespace PrinterTonerEPC.Controllers
         // GET: PrinterTonerCompatibilities/Create
         public ActionResult Create()
         {
-            //var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());//.OrderBy(s => s.PrinterModel).Select(s => new { s.PrinterID, s.PrinterModel }).Distinct();
-            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate);
+            //da se ne bi pojavljivali duplikati iz PrinterModela
+            var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());//.OrderBy(s => s.PrinterModel).Select(s => new { s.PrinterID, s.PrinterModel }).Distinct();
+            ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel");
 
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel");
+            //
+            //ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel");
+            
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
             return View();
         }
