@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            Firma
+        </th>
+        <th>
             Interni broj
         </th>
         <th>
@@ -38,6 +41,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.OwnerName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.PrinterInternalNo)
         </td>

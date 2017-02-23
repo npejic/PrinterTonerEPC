@@ -33,7 +33,9 @@ namespace PrinterToner.Models
         public bool OwnerIsInPDV { get; set; }
         public string Napomena { get; set; }
 
-        //public virtual ICollection<Printer> Printers { get; set; }
+        //TODO: promena
+        public virtual ICollection<Printer> Printers { get; set; }
+        
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual ICollection<Servis> Servis { get; set; }
     }

@@ -40,6 +40,8 @@ namespace PrinterTonerEPC.Controllers
         // GET: Printers/Create
         public ActionResult Create()
         {
+            //TODO:izmena
+            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             return View();
         }
 
@@ -48,7 +50,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PrinterID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
+        public ActionResult Create([Bind(Include = "PrinterID,OwnerID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
         {
             if (ModelState.IsValid)
             {
