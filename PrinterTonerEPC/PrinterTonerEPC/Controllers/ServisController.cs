@@ -18,11 +18,13 @@ namespace PrinterTonerEPC.Controllers
         // GET: Servis
         public ActionResult Index(string searchBySerialNo)
         {
-            var servis = db.Servis.Include(s => s.Owner).Include(s => s.Printer).OrderBy(s=>s.Owner.OwnerName).ThenBy(o=>o.ServisDate);
+            //
+            //var servis = db.Servis.Include(s => s.Owner).Include(s => s.Printer).OrderBy(s=>s.Owner.OwnerName).ThenBy(o=>o.ServisDate);
+            var servis = db.Servis.Include(s => s.Printer).OrderBy(s => s.Printer.Owner.OwnerName).ThenBy(o => o.ServisDate);
 
             if (!String.IsNullOrEmpty(searchBySerialNo))
             {
-                servis = servis.Where(o => o.Printer.PrinterSerialNo.Contains(searchBySerialNo)).OrderBy(s => s.Owner.OwnerName).ThenBy(o => o.ServisDate);
+                servis = servis.Where(o => o.Printer.PrinterSerialNo.Contains(searchBySerialNo)).OrderBy(s => s.Printer.Owner.OwnerName).ThenBy(o => o.ServisDate);
             }
 
             return View(servis.ToList());
@@ -56,7 +58,9 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ServisID,ServisDate,ServisPrice,OwnerID,PrinterID,Napomena,Created")] Servis servis)
+        //TODO:izmena
+        //public ActionResult Create([Bind(Include = "ServisID,ServisDate,ServisPrice,OwnerID,PrinterID,Napomena,Created")] Servis servis)
+        public ActionResult Create([Bind(Include = "ServisID,ServisDate,ServisPrice,PrinterID,Napomena,Created")] Servis servis)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +69,8 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
+            //TODO:izmena
+            //ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo", servis.PrinterID);
             return View(servis);
         }
@@ -82,7 +87,8 @@ namespace PrinterTonerEPC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
+            //TODO:izmena
+            //ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo", servis.PrinterID);
             return View(servis);
         }
@@ -92,7 +98,9 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ServisID,ServisDate,ServisPrice,OwnerID,PrinterID,Napomena,Created")] Servis servis)
+        //TODO:izmena
+        //public ActionResult Edit([Bind(Include = "ServisID,ServisDate,ServisPrice,OwnerID,PrinterID,Napomena,Created")] Servis servis)
+        public ActionResult Edit([Bind(Include = "ServisID,ServisDate,ServisPrice,PrinterID,Napomena,Created")] Servis servis)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +108,8 @@ namespace PrinterTonerEPC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
+            //TODO:izmena
+            //ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", servis.OwnerID);
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo", servis.PrinterID);
             return View(servis);
         }

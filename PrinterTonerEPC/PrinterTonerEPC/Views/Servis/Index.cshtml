@@ -15,6 +15,7 @@
 </p>
 <table class="table">
     <tr>
+        @*TODO:izmena*@
         <th>
             Vlasnik
         </th>
@@ -41,7 +42,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Owner.OwnerName)
+            @Html.DisplayFor(modelItem => item.Printer.Owner.OwnerName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
