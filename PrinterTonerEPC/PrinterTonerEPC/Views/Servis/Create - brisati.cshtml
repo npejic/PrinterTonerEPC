@@ -29,8 +29,8 @@
                 @Html.ValidationMessageFor(model => model.ServisPrice, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*TODO:izmena*@
+       
+         @*TODO:izmena*@
         @*<div class="form-group">
             @Html.LabelFor(model => model.OwnerID, "Firma", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,16 +38,19 @@
                 @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
             </div>
         </div>*@
+       
+        @Html.DropDownList("Firma", ViewBag.OwnerID as SelectList, "Izaberi firmu", htmlAttributes: new { onchange = "GetPrinter()" })
 
-        @*@Html.DropDownList("Firma", ViewBag.OwnerID as SelectList, "Izaberi firmu", htmlAttributes: new { onchange = "GetPrinter()" })*@
+        @Html.DropDownList("Štampač", ViewBag.Printers as SelectList, "Izaberi štampač", new { @class = "inputBox", @id = "DropDownListStates" })
 
-        <div class="form-group">
+         @*TODO:izmena*@
+        @*<div class="form-group">
             @Html.LabelFor(model => model.PrinterID, "Serijski broj", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PrinterID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PrinterID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Napomena, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -76,4 +79,30 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+
+    function GetPrinter() {
+
+        $.ajax({
+            url: "@Url.Action("GetJsonState")",
+            dataType: "json",
+            type: "GET",
+            data:{id:$("#Owner").val()},
+            error: function () {
+            },
+            beforeSend: function () {
+            },
+            success: function (data) {
+                var items = "";
+                items = "<option value=''>Choose State</option>";
+                $.each(data, function (i, item) {
+                    items += "<option value=\"" + item.Value + "\">" + item.Text + "</option>";
+                });
+                $("#DropDownListStates").html(items);
+            }
+        });
+
+    }
+</script>  
 }

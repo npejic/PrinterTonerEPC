@@ -45,13 +45,41 @@ namespace PrinterTonerEPC.Controllers
             return View(servis);
         }
 
-        // GET: Servis/Create
+        //// GET: Servis/Create
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
             return View();
         }
+
+        ////TODO: izmena
+        //// GET: Servis/Create
+        //public ActionResult Create()
+        //{
+        //    ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
+        //    ViewBag.Printers = new SelectList(new List<Printer>(), "PrinterID", "PrinterSerialNo");
+        //    return View();
+        //}
+        //public IList<Printer> GetPrinter(int id)
+        //{
+        //    return db.Printers.Where(p => p.OwnerID == id).ToList();
+        //}
+
+        //public JsonResult GetJsonState(int id)
+        //{
+
+        //    var printerList = this.GetPrinter(Convert.ToInt32(id));
+        //    var printersList = printerList.Select(p => new SelectListItem()
+        //    {
+        //        Text = p.PrinterSerialNo,
+        //        Value = p.PrinterID.ToString()
+        //    });
+            
+
+        //    return Json(printersList, JsonRequestBehavior.AllowGet);
+        //}    
+
 
         // POST: Servis/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

@@ -18,7 +18,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: Toners
         public ActionResult Index()
         {
-            var toners = db.Toners.OrderBy(t => t.TonerModel).ThenBy(t=>t.TonerYield);
+            var toners = db.Toners.OrderBy(t => t.TonerModel).ThenBy(t=>t.TonerYield).ThenBy(t=>t.TonerGram);
 
             return View(toners.ToList());
         }
@@ -49,7 +49,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerProductNo,Created")] Toner toner)
+        public ActionResult Create([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerProductNo,TonerGram,Created")] Toner toner)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerProductNo,Created")] Toner toner)
+        public ActionResult Edit([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerGram,TonerProductNo,Created")] Toner toner)
         {
             if (ModelState.IsValid)
             {

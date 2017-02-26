@@ -21,10 +21,15 @@
             Pp. br. strana
         </th>
         <th>
+            Gramaža
+        </th>
+        <th>
             Product No
         </th>
         
-        <th></th>
+        @*<th>
+            Kreirano
+        </th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -39,11 +44,14 @@
             @Html.DisplayFor(modelItem => item.TonerYield)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TonerProductNo)
+            @Html.DisplayFor(modelItem => item.TonerGram)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Created)
+            @Html.DisplayFor(modelItem => item.TonerProductNo)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>*@
         <td>
             @Html.ActionLink("Izmeni", "Edit", new { id=item.TonerID }) |
             @Html.ActionLink("Izbriši", "Delete", new { id=item.TonerID })
