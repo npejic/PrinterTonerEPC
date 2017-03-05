@@ -232,6 +232,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Servis\Create.cshtml" />
     <Content Include="Views\Servis\Create11.cshtml" />
+    <Content Include="Views\Sales\CreateByOwner.cshtml" />
+    <Content Include="Views\Servis\SelectOwner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

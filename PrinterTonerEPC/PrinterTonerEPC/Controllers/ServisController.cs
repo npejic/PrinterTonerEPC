@@ -14,6 +14,7 @@ namespace PrinterTonerEPC.Controllers
     public class ServisController : Controller
     {
         private PrinterTonerContext db = new PrinterTonerContext();
+        int selectedOwnerForServis;
 
         // GET: Servis
         public ActionResult Index(string searchBySerialNo)
@@ -49,7 +50,13 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
-            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
+            
+            //ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
+            ////var printersBySelectedOwner = db.Printers.Where(p => p.OwnerID == selectedOwnerForServis);
+            var aaa = (int)TempData["OwnerID"];
+            var printersBySelectedOwner = db.Printers.Where(p => p.OwnerID == aaa);
+            
+            ViewBag.PrinterID = new SelectList(printersBySelectedOwner, "PrinterID", "PrinterSerialNo");
             return View();
         }
 
@@ -167,6 +174,23 @@ namespace PrinterTonerEPC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //TODO izmena
+        public ActionResult SelectOwner()
+        {
+            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SelectOwner(Owner model)
+        {
+            selectedOwnerForServis = model.OwnerID;
+            TempData["OwnerID"] = model.OwnerID;
+            return RedirectToAction("Create");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

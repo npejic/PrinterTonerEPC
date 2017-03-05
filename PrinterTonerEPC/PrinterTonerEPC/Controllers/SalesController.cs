@@ -50,6 +50,15 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
+        // GET: Sales/CreateByOwner
+        public ActionResult CreateByOwner()
+        {
+            
+            ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
+
+            return View();
+        }
+
         // GET: Sales/Create
         public ActionResult Create()
         {
