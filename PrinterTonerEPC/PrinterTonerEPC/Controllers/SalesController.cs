@@ -62,8 +62,10 @@ namespace PrinterTonerEPC.Controllers
         // GET: Sales/Create
         public ActionResult Create()
         {
+            var printersNotOwnedByEPC = db.Printers.Where(p => p.Owner.OwnerName == "EPC");
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName");
-           // ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
+            //ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
+            ViewBag.PrinterID = new SelectList(printersNotOwnedByEPC, "PrinterID", "PrinterSerialNo");
             
             return View();
         }
