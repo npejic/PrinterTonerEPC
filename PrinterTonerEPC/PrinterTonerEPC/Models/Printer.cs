@@ -27,8 +27,7 @@ namespace PrinterToner.Models
         [StringLength(100)]
         public string PrinterSerialNo { get; set; }
         public string PrinterHardwareNo { get; set; }
-        //public string PrinterTonerMake { get; set; }
-        
+               
         public bool PrinterDecommissioned { get; set; }
         public bool IsEPCprinter { get; set; }
 
