@@ -37,14 +37,14 @@ namespace PrinterTonerEPC.Controllers
 
             if (!string.IsNullOrEmpty(searchByOwner))
             {
-                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner));// && s.printer.isepcprinter==true);
+                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner));
             }
             
                 return View(sales.ToList());
             }
 
         //TODO: Izbrisati
-        public ActionResult ModifyAltContract(string ModifyAlternateContract)//, string ModifyAlternateContract)
+        public ActionResult ModifyAltContract(string ModifyAlternateContract)
         {
             PrinterTonerContext db = new PrinterTonerContext();
             var sales = from s in db.Sales
@@ -63,19 +63,7 @@ namespace PrinterTonerEPC.Controllers
             return View(sales.ToList());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
 
 
         //GET
