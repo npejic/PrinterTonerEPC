@@ -17,7 +17,7 @@ namespace PrinterTonerEPC.Controllers
         int selectedOwnerForServis;
 
         // GET: Servis
-        public ActionResult Index(string searchBySerialNo)
+        public ActionResult Index(string searchBySerialNo, string searchByOwner)
         {
             //
             //var servis = db.Servis.Include(s => s.Owner).Include(s => s.Printer).OrderBy(s=>s.Owner.OwnerName).ThenBy(o=>o.ServisDate);
@@ -26,6 +26,11 @@ namespace PrinterTonerEPC.Controllers
             if (!String.IsNullOrEmpty(searchBySerialNo))
             {
                 servis = servis.Where(o => o.Printer.PrinterSerialNo.Contains(searchBySerialNo)).OrderBy(s => s.Printer.Owner.OwnerName).ThenBy(o => o.ServisDate);
+            }
+
+            if (!String.IsNullOrEmpty(searchByOwner))
+            {
+                servis = servis.Where(o => o.Printer.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Printer.Owner.OwnerName).ThenBy(o => o.ServisDate);
             }
 
             return View(servis.ToList());

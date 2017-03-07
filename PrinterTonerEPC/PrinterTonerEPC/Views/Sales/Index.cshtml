@@ -15,6 +15,9 @@
             Ugovor
         </th>
         <th>
+            Firma
+        </th>
+        <th>
             Serijski broj
         </th>
         <th>
@@ -34,6 +37,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Contract.ContractName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contract.Owner.OwnerName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)

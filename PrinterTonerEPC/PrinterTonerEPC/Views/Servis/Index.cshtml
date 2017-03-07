@@ -9,6 +9,8 @@
 @using (Html.BeginForm())
 { <p> Serijski broj: @Html.TextBox("searchBySerialNo") <input type="submit" value="Search" /></p> }
 
+@using (Html.BeginForm())
+{ <p> Firma  : @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
 
 <p>
     @Html.ActionLink("Unesi novi", "SelectOwner")
