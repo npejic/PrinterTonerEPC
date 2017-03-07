@@ -25,7 +25,7 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult SalesReportByOwner(string searchByOwner)
         {
             PrinterTonerContext db = new PrinterTonerContext();
-            var sales = db.Sales.Where(s=>s.Printer.IsEPCprinter==true).OrderBy(s => s.Contract.Owner.OwnerName).ThenBy(s => s.Contract.ContractName);
+            var sales = db.Sales.Where(s=>s.Printer.Owner.OwnerName=="EPC DOO").OrderBy(s => s.Contract.Owner.OwnerName).ThenBy(s => s.Contract.ContractName);
 
             if (!string.IsNullOrEmpty(searchByOwner))
             {

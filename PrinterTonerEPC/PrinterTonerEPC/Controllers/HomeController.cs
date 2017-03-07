@@ -52,7 +52,7 @@ namespace PrinterTonerEPC.Controllers
 
             if (!String.IsNullOrEmpty(ModifyAlternateContract))
             {
-                sales = sales.Where(s => s.Contract.Owner.OwnerName == "nik" && s.Printer.IsEPCprinter == true);
+                sales = sales.Where(s => s.Contract.Owner.OwnerName == "nik" && s.Printer.Owner.OwnerName == "EPC DOO");
                 foreach (var s in sales)
                     s.AlternateContract = ModifyAlternateContract;
                 db.SubmitChanges();

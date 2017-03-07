@@ -29,7 +29,7 @@ namespace PrinterToner.Models
         public string PrinterHardwareNo { get; set; }
                
         public bool PrinterDecommissioned { get; set; }
-        public bool IsEPCprinter { get; set; }
+        //public bool IsEPCprinter { get; set; }
 
         public int? OwnerID { get; set; }
         public virtual Owner Owner { get; set; }
