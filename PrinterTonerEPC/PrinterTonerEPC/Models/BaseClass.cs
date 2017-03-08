@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PrinterToner.Models
 {
-    public class BaseClass
+    abstract public class BaseClass
     {
         public BaseClass()
         {
