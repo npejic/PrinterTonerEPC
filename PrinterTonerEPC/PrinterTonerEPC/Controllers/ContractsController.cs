@@ -36,7 +36,8 @@ namespace PrinterTonerEPC.Controllers
             var inactiveOwners = from i in db.Contracts select i;
             var Today= DateTime.Now.Date; //.Date is not suported by LINQ
             
-            inactiveOwners = inactiveOwners.Where(a=> a.ContractActive == false && DbFunctions.AddMonths(a.ContractDate,a.ContactDuration) < Today );
+            inactiveOwners = inactiveOwners.Where(a=>DbFunctions.AddMonths(a.ContractDate,a.ContactDuration) < Today );
+            //inactiveOwners = inactiveOwners.Where(a => a.ContractActive == false && DbFunctions.AddMonths(a.ContractDate, a.ContactDuration) < Today);
 
             return View(inactiveOwners.ToList());
         }

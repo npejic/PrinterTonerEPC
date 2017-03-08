@@ -23,7 +23,6 @@
         </th>
         <th>
             Datum
-            @*@Html.DisplayNameFor(model => model.ContractDate)*@
         </th>
         
         <th></th>
@@ -45,14 +44,9 @@
         </td>
         <td>
             @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ContractDate))
-            @*@Html.DisplayFor(modelItem => item.ContractDate)*@
         </td>
-        <
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContractID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContractID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContractID })
-        </td>*@
+        
+     
     </tr>
 }
 
