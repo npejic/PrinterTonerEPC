@@ -15,7 +15,10 @@ namespace PrinterTonerEPC.Controllers
     {
         private PrinterTonerContext db = new PrinterTonerContext();
 
-        // GET: Contracts
+        /// <summary>
+        /// All contracts
+        /// </summary>
+        /// <returns>list of contracts ordered by Owner name and Date</returns>
         public ActionResult Index()
         {
             var contracts = db.Contracts.Include(c => c.Owner).OrderBy(c=>c.Owner.OwnerName).ThenBy(c=>c.ContractDate);
