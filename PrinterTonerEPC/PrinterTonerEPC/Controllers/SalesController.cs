@@ -64,15 +64,12 @@ namespace PrinterTonerEPC.Controllers
         {
             var printersNotOwnedByEPC = db.Printers.Where(p => p.Owner.OwnerName == "EPC DOO");
             ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName");
-            //ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
             ViewBag.PrinterID = new SelectList(printersNotOwnedByEPC, "PrinterID", "PrinterSerialNo");
             
             return View();
         }
 
         // POST: Sales/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)
@@ -89,7 +86,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        //TODO:
         // GET: Sales/Edit/5
         public ActionResult EditSalesReportByOwner(int? id)
         {
@@ -109,8 +105,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Sales/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditSalesReportByOwner([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)
@@ -127,9 +121,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        ////////////////////////////////
-        
-        
         
         // GET: Sales/Edit/5
         public ActionResult Edit(int? id)
@@ -150,8 +141,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Sales/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)

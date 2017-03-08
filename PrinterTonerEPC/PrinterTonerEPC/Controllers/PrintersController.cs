@@ -40,14 +40,11 @@ namespace PrinterTonerEPC.Controllers
         // GET: Printers/Create
         public ActionResult Create()
         {
-            //TODO:izmena
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             return View();
         }
 
         // POST: Printers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PrinterID,OwnerID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
@@ -80,8 +77,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Printers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PrinterID,OwnerID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
@@ -92,7 +87,6 @@ namespace PrinterTonerEPC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //TODO:izmena
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", printer.OwnerID);
             return View(printer);
         }

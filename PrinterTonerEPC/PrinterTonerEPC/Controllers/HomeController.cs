@@ -12,7 +12,7 @@ namespace PrinterTonerEPC.Controllers
     {
         public ActionResult Index()
         {
-            //TODO: Izračunati ukupan broj EPC štampača na iznajmljivanju
+            //Izračunava ukupan broj EPC štampača na iznajmljivanju
             PrinterTonerContext db = new PrinterTonerContext();
             var sales = from s in db.Sales
                         where s.Printer.Owner.OwnerName == "EPC DOO"
@@ -27,43 +27,6 @@ namespace PrinterTonerEPC.Controllers
             
             return View();
         }
-
-        //TODO: izbrisati
-        public ActionResult ReportByOwner(string searchByOwner)
-        {
-            PrinterTonerContext db = new PrinterTonerContext();
-            var sales = from s in db.Sales
-                         select s;
-
-            if (!string.IsNullOrEmpty(searchByOwner))
-            {
-                sales = sales.Where(s => s.Contract.Owner.OwnerName.Contains(searchByOwner));
-            }
-            
-                return View(sales.ToList());
-            }
-
-        //TODO: Izbrisati
-        public ActionResult ModifyAltContract(string ModifyAlternateContract)
-        {
-            PrinterTonerContext db = new PrinterTonerContext();
-            var sales = from s in db.Sales
-                        select s;
-
-            if (!String.IsNullOrEmpty(ModifyAlternateContract))
-            {
-                sales = sales.Where(s => s.Contract.Owner.OwnerName == "nik" && s.Printer.Owner.OwnerName == "EPC DOO");
-                foreach (var s in sales)
-                    s.AlternateContract = ModifyAlternateContract;
-                db.SubmitChanges();
-            }
-
-           
-
-            return View(sales.ToList());
-        }
-
-      
 
 
         //GET

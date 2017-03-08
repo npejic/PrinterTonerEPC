@@ -32,11 +32,6 @@ namespace PrinterTonerEPC.Controllers
 
             var inactiveOwners = from i in db.Contracts select i;
             var Today= DateTime.Now.Date; //.Date is not suported by LINQ
-            //foreach (var o in inactiveOwners)
-            //{
-            //    o.ContractDate = o.ContractDate.AddMonths(o.ContactDuration);
-            //}
-            //inactiveOwners = inactiveOwners.Where(a => a.ContractDate < Today);//TODO: && a.ContractActive == false);
             
             inactiveOwners = inactiveOwners.Where(a=> a.ContractActive == false && DbFunctions.AddMonths(a.ContractDate,a.ContactDuration) < Today );
 
@@ -66,8 +61,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Contracts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,ContractActive,Created")] Contract contract)
@@ -100,8 +93,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Contracts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,ContractActive,Created")] Contract contract)

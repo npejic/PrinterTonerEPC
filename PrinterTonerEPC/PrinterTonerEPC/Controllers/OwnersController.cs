@@ -25,11 +25,6 @@ namespace PrinterTonerEPC.Controllers
 
             if (!String.IsNullOrEmpty(searchByOwner))
             {
-                //owners = from o in db.Owners
-                //         where o.OwnerName.Contains(searchByOwner)
-                //         orderby o.OwnerName
-                //         select o;
-
                 owners = owners.Where(o => o.OwnerName.Contains(searchByOwner)).OrderBy(o=>o.OwnerName);
             }
             return View(owners.ToList());
@@ -59,8 +54,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Owners/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV, OwnerEmail,Created, Napomena")] Owner owner)
@@ -91,8 +84,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: Owners/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV, OwnerEmail,Created, Napomena")] Owner owner)

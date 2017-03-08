@@ -53,19 +53,14 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult Create()
         {
             //da se ne bi pojavljivali duplikati iz PrinterModela
-            var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());//.OrderBy(s => s.PrinterModel).Select(s => new { s.PrinterID, s.PrinterModel }).Distinct();
+            var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());
             ViewBag.PrinterID = new SelectList(printerModelNoDuplicate, "PrinterID", "PrinterModel");
 
-            //
-            //ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel");
-            
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
             return View();
         }
 
         // POST: PrinterTonerCompatibilities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PrinterTonerCompatibilityID,PrinterID,TonerID")] PrinterTonerCompatibility printerTonerCompatibility)
@@ -76,9 +71,6 @@ namespace PrinterTonerEPC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            //var printerModelNoDuplicate = db.Printers.GroupBy(s => s.PrinterModel).Select(x => x.FirstOrDefault());//.OrderBy(s => s.PrinterModel).Select(s => new { s.PrinterID, s.PrinterModel }).Distinct();
-            //ViewBag.PrinterID = new SelectList(printerModelNoDuplicate);
 
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterModel", printerTonerCompatibility.PrinterID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", printerTonerCompatibility.TonerID);
@@ -103,8 +95,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: PrinterTonerCompatibilities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PrinterTonerCompatibilityID,PrinterID,TonerID")] PrinterTonerCompatibility printerTonerCompatibility)

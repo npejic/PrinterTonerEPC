@@ -31,7 +31,7 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult LastTonerSale(string searchByOwner, string searchByToner)
         {
             
-            ///OVO RADI!!! treba samo da zanemari koji j ugovor u pitanju i prikaže samo vlasnika
+            ///OVO RADI!!! treba samo da zanemari koji je ugovor u pitanju i prikaže samo vlasnika
             //var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(s=>s.OrderByDescending(x=>x.SaleTonerDate).FirstOrDefault());
 
             var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Contract.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s=>s.Contract.Owner.OwnerName).ThenBy(s=>s.Toner.TonerModel);
@@ -75,8 +75,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: SaleToners/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,ContractID,TonerID")] SaleToner saleToner)
@@ -111,8 +109,6 @@ namespace PrinterTonerEPC.Controllers
         }
 
         // POST: SaleToners/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,ContractID,TonerID")] SaleToner saleToner)
