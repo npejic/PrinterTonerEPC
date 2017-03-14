@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<PrinterToner.Models.SaleToner>
 
 @{
-    ViewBag.Title = "TonerAlarm";
-    Layout = "TonerAlarm";
+    ViewBag.Title = "Index";
+    
 }
 
-<h2>TonerAlarm</h2>
+<h2>Toner Alarm</h2>
 
 @using (Html.BeginForm())
-{ <p> Toner: @Html.TextBox("periodInMonths") <input type="submit" value="Search" /></p> }
+{ <p> Posmatran broj meseci: @Html.TextBox("periodInMonths") <input type="submit" value="Search" /></p> }
 
 @*<p>
         @Html.ActionLink("Unesi novo", "Create")

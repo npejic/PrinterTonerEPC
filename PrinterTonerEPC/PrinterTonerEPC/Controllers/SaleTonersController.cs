@@ -38,7 +38,7 @@ namespace PrinterTonerEPC.Controllers
                 int period = Int16.Parse(periodInMonths);
                 var LimitDate = DateTime.Now.Date;
                 LimitDate = LimitDate.AddMonths(-period);
-                ownersWithNoAlarmOrder = ownersWithNoAlarmOrder.Where(o => o.Contract.Owner.OwnerName.Contains(periodInMonths)).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+                ownersWithNoAlarmOrder = ownersWithNoAlarmOrder.Where(o => o.SaleTonerDate < LimitDate).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             }
 
             return View(ownersWithNoAlarmOrder.ToList());
