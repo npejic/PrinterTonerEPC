@@ -1,0 +1,26 @@
+OK 1. Ispis KERTANJE STAMPACA ubaciti kolonu MODEL (štampaca) izmedju Firme i Serijskog broja.
+
+2. Definisati spisak korisnika programa kao sto je definisana Lista svih firmi. Polja koja treba da opisuju korisnika: 
+IME&PREZIME; NICK; TEL; NIVO; USER; PASSWORD;
+
+3. Treba ndefinisati NIVO PRISTUPA. Ovo polje je 1 TOP ili 2 i definise se prilikom definisanja spiska korisnika programa.:
+Tacno sta sve treba sakriti za 2 nivo je lakse da ti pokazem uzivo.
+
+4. Treba kreirati IZVESTAJ 5 koji se odnosi na pregled trebovanja kaseta. Izvestaj je tipa ALARMA gde se treba videti ko davno nije narucivao kasete. E sada 
+posto je tu bitno da li je subjekat aktivan treba da ima status AKTIVAN ili NE. Ako ti je komplikovano da ubacis ovaj status u opisu firme onda polje da li je 
+u PDV ili ne preimenuj u aktivan ili ne. Izvestaj 5 treba da je napravljen upit nad bazom: SVI AKTIVNI KLIJENTI koji nisu narucili kasetu duze od N meseci. SORT 
+treba da je po najstaRIJEM DATUMU pa onda po FIRMI.
+
+DATUMZADNJENARUDZBINE TONER FIRMA 
+
+5. KRETANJE TONERA treba malo korigovati! Treba da na satrtu pita za koju FIRMU se vrsi kretanje! Onda treba da pita koji predefinisani TONER po kojoj ceni i 
+kog datuma. Bez informacije o ugovoru.
+
+6. Treba napraviti TODO listu (o ovome smo pricali u jako ranoj fazi programa). TODO neka bude u obliku GRIDA npr na prvom ekranu. Taj ekran prikazuje SVE 
+nezavrsene radove sortirane po najstarijem datumu. Oblik grila:
+
+OTVORIODATUM OTVORIOUSERNICK  OPIS ZATVORIOUSERNICK ZATVORIODATUM STATUS
+primer:
+
+07.03.2017 BUCKO KASETU POKUPITI SA LIMANA 4 (ovaj se vidi)
+05.03.2017 PERKO STMPAC VRATITI MAKICU OGNJEN 06.03.2017 OK (ovaj se ne vidi na pocetnom gridu)
