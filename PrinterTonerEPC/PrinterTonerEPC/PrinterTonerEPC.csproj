@@ -126,6 +126,7 @@
     <Compile Include="Controllers\SaleTonersController.cs" />
     <Compile Include="Controllers\ServisController.cs" />
     <Compile Include="Controllers\TonersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\PrinterToner.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,6 +232,10 @@
     <Content Include="Views\Servis\Create11.cshtml" />
     <Content Include="Views\Sales\CreateByOwner.cshtml" />
     <Content Include="Views\Servis\SelectOwner.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

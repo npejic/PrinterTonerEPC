@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PrinterTonerEPC.DAL;
+using PrinterToner.Models;
 
 
 namespace PrinterTonerEPC.Controllers
 {
     public class HomeController : Controller
     {
+        private PrinterTonerContext db = new PrinterTonerContext();
+
         public ActionResult Index()
         {
             //Izračunava ukupan broj EPC štampača na iznajmljivanju
@@ -40,11 +43,22 @@ namespace PrinterTonerEPC.Controllers
         [HttpPost]
         public ActionResult Login(string userName, string password)
         {
-            if ("simic".Equals(userName) && "ognjen".Equals(password)) 
+            //User ClientToCheck = new User {Username=userName, Password = password};
+            if (db.Users.Any(a => a.Username == userName && a.Password == password))
             {
-                Session["user"] = "Ognjen";
+                var currentClient = db.Users.Where(a => a.Username == userName && a.Password == password).FirstOrDefault();
+                if(currentClient.IsAdmin)
+                { Session["userIsAdministrator"] = "Administrator"; }
+                else
+                { Session["userIsAdministrator"] = "Client"; }
                 return RedirectToAction("Index", "Home");
             }
+            
+            //if ("simic".Equals(userName) && "ognjen".Equals(password)) 
+            //{
+            //    Session["user"] = "Ognjen";
+            //    return RedirectToAction("Index", "Home");
+            //}
 
             return View();
         }
