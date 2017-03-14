@@ -25,5 +25,7 @@ namespace PrinterTonerEPC.DAL
         {
             throw new NotImplementedException();
         }
+
+        public System.Data.Entity.DbSet<PrinterToner.Models.ToDo> ToDoes { get; set; }
     }
 }

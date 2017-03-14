@@ -1,0 +1,58 @@
+﻿@model PrinterToner.Models.ToDo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ToDo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Opened)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opened)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserOpenedID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserOpenedID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Closed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Closed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserClosedID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserClosedID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ToDoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

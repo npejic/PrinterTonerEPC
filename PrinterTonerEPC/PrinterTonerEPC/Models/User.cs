@@ -17,5 +17,7 @@ namespace PrinterToner.Models
         public string Nick { get; set; }
         public string Telephone { get; set; }
         public bool IsAdmin { get; set; }
+
+        public virtual ICollection<ToDo> ToDoes { get; set; }
     }
 }
