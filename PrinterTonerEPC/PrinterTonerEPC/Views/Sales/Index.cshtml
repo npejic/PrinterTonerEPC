@@ -18,6 +18,9 @@
             Firma
         </th>
         <th>
+            Model
+        </th>
+        <th>
             Serijski broj
         </th>
         <th>
@@ -40,6 +43,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Contract.Owner.OwnerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Printer.PrinterModel)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Printer.PrinterSerialNo)
