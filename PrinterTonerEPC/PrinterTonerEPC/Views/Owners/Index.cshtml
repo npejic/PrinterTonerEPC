@@ -42,6 +42,9 @@
         <th>
             Firma u PDV-u@*@Html.DisplayNameFor(model => model.OwnerIsInPDV)*@
         </th>
+        <th>
+            Aktivan status
+        </th>
         @*<th>
             Kreirano
         </th>*@
@@ -79,6 +82,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OwnerIsInPDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerIsActive)
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.Created)
