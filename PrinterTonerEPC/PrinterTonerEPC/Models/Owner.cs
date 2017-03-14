@@ -31,6 +31,7 @@ namespace PrinterToner.Models
         [Required(ErrorMessage = "Morate uneti matični broj firme.")]
         public string OwnerMatBroj { get; set; }
         public bool OwnerIsInPDV { get; set; }
+        public bool OwnerIsActive { get; set; }
         public string Napomena { get; set; }
 
         //TODO: promena

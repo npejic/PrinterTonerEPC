@@ -1,6 +1,6 @@
 OK 1. Ispis KERTANJE STAMPACA ubaciti kolonu MODEL (štampaca) izmedju Firme i Serijskog broja.
 
-2. Definisati spisak korisnika programa kao sto je definisana Lista svih firmi. Polja koja treba da opisuju korisnika: 
+OK 2. Definisati spisak korisnika programa kao sto je definisana Lista svih firmi. Polja koja treba da opisuju korisnika: 
 IME&PREZIME; NICK; TEL; NIVO; USER; PASSWORD;
 
 3. Treba ndefinisati NIVO PRISTUPA. Ovo polje je 1 TOP ili 2 i definise se prilikom definisanja spiska korisnika programa.:
