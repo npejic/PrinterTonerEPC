@@ -27,6 +27,24 @@ namespace PrinterTonerEPC.Controllers
             return View(saleToners.ToList());
         }
 
+        //Returns list of owners (companies) that didn't order toners in last X (periodInMonths) months
+        public ActionResult TonerAlarm(string periodInMonths)
+        {
+
+            var ownersWithNoAlarmOrder = db.SaleToners.GroupBy(g => new { g.Contract.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Contract.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
+
+            if (!String.IsNullOrEmpty(periodInMonths))
+            {
+                int period = Int16.Parse(periodInMonths);
+                var LimitDate = DateTime.Now.Date;
+                LimitDate = LimitDate.AddMonths(-period);
+                ownersWithNoAlarmOrder = ownersWithNoAlarmOrder.Where(o => o.Contract.Owner.OwnerName.Contains(periodInMonths)).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+            }
+
+            return View(ownersWithNoAlarmOrder.ToList());
+        }
+
+
         //LastTonerSale
         public ActionResult LastTonerSale(string searchByOwner, string searchByToner)
         {
