@@ -10,7 +10,7 @@ namespace PrinterToner.Models
     {
         public int ToDoID { get; set; }
         
-        public DateTime? Opened { get; set; }
+        //public DateTime? Opened { get; set; }
      
         public string Description { get; set; }
 

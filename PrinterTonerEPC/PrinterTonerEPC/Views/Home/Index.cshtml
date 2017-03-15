@@ -1,15 +1,51 @@
-﻿@{
+﻿@model IEnumerable<PrinterToner.Models.ToDo>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-        <div class="jumbotron">
+        @*<div class="jumbotron">
             <a href="http://epc.rs/">
                 <img src="~/Images/epc logo manji.jpg" />
                 <h3>@ViewData["CountRentedPrinters"]</h3>
             </a>
-        </div>
+        </div>*@
     
-<h3>Welcome @Session["userIsAdministrator"]</h3>
+@*<h3>Welcome @Session["userIsAdministrator"]</h3>*@
+
+<table class="table">
+    <tr>
+        <th>
+            Opis posla
+        </th>
+        <th>
+            Kreiran
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", "ToDoes", new { id = item.ToDoID }, null)
+            </td>
+            <th></th>
+            <th></th>
+        </tr>
+    }
+
+</table>
+
+
 <div class="row">
     <div class="col-md-4">
         <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/Sales/SalesReportByOwner">Izveštaj br.1 &raquo;</a></p>

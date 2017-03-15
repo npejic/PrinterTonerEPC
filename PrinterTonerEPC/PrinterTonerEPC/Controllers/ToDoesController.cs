@@ -35,7 +35,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ToDoID,Opened,Description,Closed,UserID,IsClosed")] ToDo toDo)
+        public ActionResult Create([Bind(Include = "ToDoID,Description,Closed,UserID,IsClosed")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ToDoID,Opened,Description,Closed,UserID,IsClosed")] ToDo toDo)
+        public ActionResult Edit([Bind(Include = "ToDoID,Description,Closed,UserID,IsClosed")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
