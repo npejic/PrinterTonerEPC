@@ -4,74 +4,75 @@
     ViewBag.Title = "Home Page";
 }
 
-        @*<div class="jumbotron">
+
+    @*<div class="jumbotron">
             <a href="http://epc.rs/">
                 <img src="~/Images/epc logo manji.jpg" />
                 <h3>@ViewData["CountRentedPrinters"]</h3>
             </a>
         </div>*@
-    
-@*<h3>Welcome @Session["userIsAdministrator"]</h3>*@
 
-<table class="table">
-    <tr>
-        <th>
-            Opis posla
-        </th>
-        <th>
-            Kreiran
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
+    @*<h3>Welcome @Session["userIsAdministrator"]</h3>*@
 
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Created)
-            </td>
-
-            <td>
-                @Html.ActionLink("Izmeni", "Edit", "ToDoes", new { id = item.ToDoID }, null)
-            </td>
+            <th>
+                Opis posla
+            </th>
+            <th>
+                Kreiran
+            </th>
             <th></th>
             <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Izmeni", "Edit", "ToDoes", new { id = item.ToDoID }, null)
+                </td>
+                <th></th>
+                <th></th>
+            </tr>
+        }
+
+    </table>
 
 
-<div class="row">
-    <div class="col-md-4">
-        <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/Sales/SalesReportByOwner">Izveštaj br.1 &raquo;</a></p>
-        <p>
-            @*//TODO: Izbriši hiperlink u tački (dole) i popravi link za izveštaj ReportByOwner (gore)*@
-            Lokacije štampača po ugovoru @Html.ActionLink(".", "SalesReportByOwner", "Sales")
-        </p>
+    <div class="row">
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/Sales/SalesReportByOwner">Izveštaj br.1 &raquo;</a></p>
+            <p>
+                @*//TODO: Izbriši hiperlink u tački (dole) i popravi link za izveštaj ReportByOwner (gore)*@
+                Lokacije štampača po ugovoru @Html.ActionLink(".", "SalesReportByOwner", "Sales")
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/Contracts/InactiveOwners">Izveštaj br.2 &raquo;</a></p>
+            <p>Neaktivni ugovori</p>
+        </div>
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/PrinterTonerCompatibilities/Index">Izveštaj br.3 &raquo;</a></p>
+            <p>Kompatibilnost tonera i štampača</p>
+        </div>
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/SaleToners/LastTonerSale">Izveštaj br.4 &raquo;</a></p>
+            <p>Poslednji izlaz tonera</p>
+        </div>
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/SaleToners/TonerAlarm">Izveštaj br.5 &raquo;</a></p>
+            <p>Aktivnost firme</p>
+        </div>
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/">Izveštaj br.6 &raquo;</a></p>
+            <p>Ukupan broj tonera sa izlazom</p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/Contracts/InactiveOwners">Izveštaj br.2 &raquo;</a></p>
-        <p>Neaktivni ugovori</p>
-    </div>
-    <div class="col-md-4">
-        <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/PrinterTonerCompatibilities/Index">Izveštaj br.3 &raquo;</a></p>
-        <p>Kompatibilnost tonera i štampača</p>
-    </div>
-    <div class="col-md-4">
-        <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/SaleToners/LastTonerSale">Izveštaj br.4 &raquo;</a></p>
-        <p>Poslednji izlaz tonera</p>
-    </div>
-    <div class="col-md-4">
-        <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/SaleToners/TonerAlarm">Izveštaj br.5 &raquo;</a></p>
-        <p>Aktivnost firme</p>
-    </div>
-    <div class="col-md-4">
-        <p><a class="btn btn-default" href="http://npejic-001-site1.htempurl.com/">Izveštaj br.6 &raquo;</a></p>
-        <p>Ukupan broj tonera sa izlazom</p>
-    </div>
-</div>

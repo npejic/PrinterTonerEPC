@@ -7,15 +7,23 @@
     Layout = null;
 }
 
-<h2>Login</h2>
+
+
+<div class="jumbotron"
+     style="text-align:center;">
+    <h2>EPC printer & toner tracking application</h2>
+    <a href="http://epc.rs/">
+        <img src="~/Images/epc logo manji.jpg" />
+    </a>
+    <h1>   </h1>
+</div>
 
 @using (Html.BeginForm())
 {
-    <div>@Html.Label("User Name")</div>
-    <div class="col-md-10">@Html.TextBox("userName")</div>
-    <div>@Html.Label("Password")</div>
-    <div>@Html.Password("Password")</div>
-    @*@Html.Password("password", "", new { id = "password", Textmode = "Password" })*@
-    <input type="submit" value="Login" />
-       
-}
+    <div class="table" style="text-align:center;">
+        <div></div>
+        <div>
+            @Html.Label("User Name: ") @Html.TextBox("userName") @Html.Label("Password:   ")@Html.Password("Password") <input type="submit" value="Login" />
+        </div>
+        </div>
+        }
