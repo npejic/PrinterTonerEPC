@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Opened)
+            @Html.DisplayNameFor(model => model.User.Username)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserOpenedID)
+            @Html.DisplayNameFor(model => model.Opened)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -23,28 +23,22 @@
         <th>
             @Html.DisplayNameFor(model => model.Closed)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserClosedID)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Opened)
+            @Html.DisplayFor(modelItem => item.User.Username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserOpenedID)
+            @Html.DisplayFor(modelItem => item.Opened)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Closed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserClosedID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ToDoID }) |

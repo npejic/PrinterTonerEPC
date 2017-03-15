@@ -18,7 +18,8 @@ namespace PrinterTonerEPC.Controllers
         // GET: ToDoes
         public ActionResult Index()
         {
-            return View(db.ToDoes.ToList());
+            var toDoes = db.ToDoes.Include(t => t.User);
+            return View(toDoes.ToList());
         }
 
         // GET: ToDoes/Details/5
@@ -39,6 +40,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: ToDoes/Create
         public ActionResult Create()
         {
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ToDoID,Opened,UserOpenedID,Description,Closed,UserClosedID")] ToDo toDo)
+        public ActionResult Create([Bind(Include = "ToDoID,Opened,Description,Closed,UserID")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username", toDo.UserID);
             return View(toDo);
         }
 
@@ -71,6 +74,7 @@ namespace PrinterTonerEPC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username", toDo.UserID);
             return View(toDo);
         }
 
@@ -79,7 +83,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ToDoID,Opened,UserOpenedID,Description,Closed,UserClosedID")] ToDo toDo)
+        public ActionResult Edit([Bind(Include = "ToDoID,Opened,Description,Closed,UserID")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace PrinterTonerEPC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username", toDo.UserID);
             return View(toDo);
         }
 
