@@ -15,13 +15,16 @@
             @Html.DisplayNameFor(model => model.User.Username)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Opened)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Closed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsClosed)
+        </th>
+        <th>
+            Kreirano
         </th>
         <th></th>
     </tr>
@@ -32,17 +35,19 @@
             @Html.DisplayFor(modelItem => item.User.Username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Opened)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Closed)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.IsClosed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ToDoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ToDoID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ToDoID })
         </td>
     </tr>

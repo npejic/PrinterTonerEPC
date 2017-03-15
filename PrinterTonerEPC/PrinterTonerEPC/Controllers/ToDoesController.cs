@@ -22,21 +22,7 @@ namespace PrinterTonerEPC.Controllers
             return View(toDoes.ToList());
         }
 
-        // GET: ToDoes/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ToDo toDo = db.ToDoes.Find(id);
-            if (toDo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(toDo);
-        }
-
+     
         // GET: ToDoes/Create
         public ActionResult Create()
         {
@@ -49,7 +35,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ToDoID,Opened,Description,Closed,UserID")] ToDo toDo)
+        public ActionResult Create([Bind(Include = "ToDoID,Opened,Description,Closed,UserID,IsClosed")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +69,7 @@ namespace PrinterTonerEPC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ToDoID,Opened,Description,Closed,UserID")] ToDo toDo)
+        public ActionResult Edit([Bind(Include = "ToDoID,Opened,Description,Closed,UserID,IsClosed")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {

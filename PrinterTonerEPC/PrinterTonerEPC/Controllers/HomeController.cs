@@ -22,6 +22,8 @@ namespace PrinterTonerEPC.Controllers
                         select s;
             var CountRentedPrinters = sales.Count();
             ViewData["CountRentedPrinters"] = CountRentedPrinters;
+
+            var openedTasks = db.ToDoes.Where(c => c.IsClosed == false).OrderByDescending(c => c.Created);
             return View();
         }
 

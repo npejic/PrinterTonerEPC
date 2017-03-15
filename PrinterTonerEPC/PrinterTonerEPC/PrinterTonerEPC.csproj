@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="EPC SQLQuery DATA only.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -241,7 +242,6 @@
     <Content Include="Views\SaleToners\TonerAlarm.cshtml" />
     <Content Include="Views\ToDoes\Create.cshtml" />
     <Content Include="Views\ToDoes\Delete.cshtml" />
-    <Content Include="Views\ToDoes\Details.cshtml" />
     <Content Include="Views\ToDoes\Edit.cshtml" />
     <Content Include="Views\ToDoes\Index.cshtml" />
   </ItemGroup>
