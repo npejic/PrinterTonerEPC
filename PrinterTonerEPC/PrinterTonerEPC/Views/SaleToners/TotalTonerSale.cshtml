@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PrinterToner.Models.TonerTotal>
+
+@{
+    ViewBag.Title = "TotalTonerSale";
+}
+
+<h2>TotalTonerSale</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Toner
+        </th>
+        <th>
+            Ukupno
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTonerModel)
+            </td>
+            <td>
+                @item.TonerTotalCount
+            </td>
+        </tr>
+    }
+
+</table>

@@ -20,10 +20,10 @@ namespace PrinterTonerEPC.Controllers
         {
             var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)
                                 .OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
-            
-            
 
-            
+
+
+
             return View(saleToners.ToList());
         }
 
@@ -45,14 +45,34 @@ namespace PrinterTonerEPC.Controllers
         }
 
 
+        //TotalTonerSale
+        public ActionResult TotalTonerSale(string dateFrom, string dateTo)
+        {
+            //var totalTonerSale = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
+            //var totalTonerSale = db.SaleToners.Select(g => g.Toner.TonerModel);//.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
+
+            //if (!String.IsNullOrEmpty(searchByOwner) || !String.IsNullOrEmpty(searchByToner))
+            //{
+            //    totalTonerSale = totalTonerSale.Where(o => o.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+            //}
+
+            var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
+            {
+                TotalTonerModel = r.Key,
+                TonerTotalCount = r.Count()
+            }).OrderBy(c => c.TonerTotalCount);
+          
+            return View(reports.ToList());
+        }
+
         //LastTonerSale
         public ActionResult LastTonerSale(string searchByOwner, string searchByToner)
         {
-            
+
             ///OVO RADI!!! treba samo da zanemari koji je ugovor u pitanju i prikaže samo vlasnika
             //var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(s=>s.OrderByDescending(x=>x.SaleTonerDate).FirstOrDefault());
 
-            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s=>s.Owner.OwnerName).ThenBy(s=>s.Toner.TonerModel);
+            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
 
             if (!String.IsNullOrEmpty(searchByOwner))
             {

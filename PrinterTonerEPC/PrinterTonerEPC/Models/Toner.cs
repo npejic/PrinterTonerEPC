@@ -23,4 +23,10 @@ namespace PrinterToner.Models
 
         public virtual ICollection<PrinterTonerCompatibility> PrinterTonerCompatibilitys { get; set; }
     }
+
+    public class TonerTotal
+    {
+        public string TotalTonerModel { get; set; }
+        public int TonerTotalCount { get; set; }
+    }
 }

@@ -244,6 +244,7 @@
     <Content Include="Views\ToDoes\Delete.cshtml" />
     <Content Include="Views\ToDoes\Edit.cshtml" />
     <Content Include="Views\ToDoes\Index.cshtml" />
+    <Content Include="Views\SaleToners\TotalTonerSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
