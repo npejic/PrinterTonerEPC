@@ -4,24 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Zadaci</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Unesi novi", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.User.Username)
+            Radnik
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Opis posla
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Closed)
+            Datum završetka
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsClosed)
+            Završen
         </th>
         <th>
             Kreirano
@@ -47,8 +47,8 @@
             @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ToDoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ToDoID })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.ToDoID }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.ToDoID })
         </td>
     </tr>
 }
