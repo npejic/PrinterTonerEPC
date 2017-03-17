@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            Ugovor
+            Firma
         </th>
         <th>
             Toner
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Contract.ContractName)
+            @Html.DisplayFor(modelItem => item.Owner.OwnerName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Toner.TonerModel)

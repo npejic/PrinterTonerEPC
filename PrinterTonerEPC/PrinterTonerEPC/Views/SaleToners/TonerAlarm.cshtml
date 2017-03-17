@@ -18,9 +18,9 @@
         <th>
             Firma
         </th>
-        <th>
+        @*<th>
             Ugovor
-        </th>
+        </th>*@
         <th>
             Toner
         </th>
@@ -37,11 +37,11 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Contract.Owner.OwnerName)
+                @Html.DisplayFor(modelItem => item.Owner.OwnerName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Contract.ContractName)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Toner.TonerModel)
             </td>

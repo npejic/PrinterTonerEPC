@@ -39,5 +39,6 @@ namespace PrinterToner.Models
         
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual ICollection<Servis> Servis { get; set; }
+        public virtual ICollection<Toner> Toners { get; set; }
     }
 }

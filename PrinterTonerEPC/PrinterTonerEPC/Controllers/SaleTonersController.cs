@@ -18,8 +18,8 @@ namespace PrinterTonerEPC.Controllers
         // GET: SaleToners
         public ActionResult Index()
         {
-            var saleToners = db.SaleToners.Include(s => s.Contract).Include(s => s.Toner)
-                                .OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+            var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)
+                                .OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             
             
 
@@ -31,14 +31,14 @@ namespace PrinterTonerEPC.Controllers
         public ActionResult TonerAlarm(string periodInMonths)
         {
 
-            var ownersWithNoAlarmOrder = db.SaleToners.GroupBy(g => new { g.Contract.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Contract.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
+            var ownersWithNoAlarmOrder = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
 
             if (!String.IsNullOrEmpty(periodInMonths))
             {
                 int period = Int16.Parse(periodInMonths);
                 var LimitDate = DateTime.Now.Date;
                 LimitDate = LimitDate.AddMonths(-period);
-                ownersWithNoAlarmOrder = ownersWithNoAlarmOrder.Where(o => o.SaleTonerDate < LimitDate && o.Contract.Owner.OwnerIsActive == true).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+                ownersWithNoAlarmOrder = ownersWithNoAlarmOrder.Where(o => o.SaleTonerDate < LimitDate && o.Owner.OwnerIsActive == true).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             }
 
             return View(ownersWithNoAlarmOrder.ToList());
@@ -52,17 +52,17 @@ namespace PrinterTonerEPC.Controllers
             ///OVO RADI!!! treba samo da zanemari koji je ugovor u pitanju i prikaže samo vlasnika
             //var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(s=>s.OrderByDescending(x=>x.SaleTonerDate).FirstOrDefault());
 
-            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Contract.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s=>s.Contract.Owner.OwnerName).ThenBy(s=>s.Toner.TonerModel);
+            var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s=>s.Owner.OwnerName).ThenBy(s=>s.Toner.TonerModel);
 
             if (!String.IsNullOrEmpty(searchByOwner))
             {
-                lastTonerSale = lastTonerSale.Where(o => o.Contract.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+                lastTonerSale = lastTonerSale.Where(o => o.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             }
 
 
             if (!String.IsNullOrEmpty(searchByToner))
             {
-                lastTonerSale = lastTonerSale.Where(o => o.Toner.TonerModel.Contains(searchByToner)).OrderBy(s => s.Contract.ContractName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+                lastTonerSale = lastTonerSale.Where(o => o.Toner.TonerModel.Contains(searchByToner)).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             }
 
             return View(lastTonerSale.ToList());
@@ -87,7 +87,7 @@ namespace PrinterTonerEPC.Controllers
         // GET: SaleToners/Create
         public ActionResult Create()
         {
-            ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName");
+            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
             return View();
         }
@@ -95,7 +95,7 @@ namespace PrinterTonerEPC.Controllers
         // POST: SaleToners/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,ContractID,TonerID")] SaleToner saleToner)
+        public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID")] SaleToner saleToner)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", saleToner.ContractID);
+            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", saleToner.OwnerID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", saleToner.TonerID);
             return View(saleToner);
         }
@@ -121,7 +121,7 @@ namespace PrinterTonerEPC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", saleToner.ContractID);
+            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", saleToner.OwnerID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", saleToner.TonerID);
             return View(saleToner);
         }
@@ -129,7 +129,7 @@ namespace PrinterTonerEPC.Controllers
         // POST: SaleToners/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,ContractID,TonerID")] SaleToner saleToner)
+        public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID")] SaleToner saleToner)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace PrinterTonerEPC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ContractID = new SelectList(db.Contracts, "ContractID", "ContractName", saleToner.ContractID);
+            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", saleToner.OwnerID);
             ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel", saleToner.TonerID);
             return View(saleToner);
         }
