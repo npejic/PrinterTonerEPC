@@ -26,7 +26,8 @@ namespace PrinterTonerEPC.Controllers
         // GET: ToDoes/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username");
+            var sortedUsers = db.Users.OrderBy(c => c.Nick);
+            ViewBag.UserID = new SelectList(sortedUsers, "UserID", "Nick");
             return View();
         }
 
@@ -44,7 +45,7 @@ namespace PrinterTonerEPC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username", toDo.UserID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Nick", toDo.UserID);
             return View(toDo);
         }
 
