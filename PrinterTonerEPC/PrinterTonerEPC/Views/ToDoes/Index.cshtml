@@ -32,19 +32,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.User.Username)
+            @Html.DisplayFor(modelItem => item.User.Nick)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Closed)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Closed))
+            @*@Html.DisplayFor(modelItem => item.Closed)*@
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.IsClosed)
         </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.Created)
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Created))
+            @*@Html.DisplayFor(modelItem => item.Created)*@
         </td>
         <td>
             @Html.ActionLink("Izmeni", "Edit", new { id=item.ToDoID }) |

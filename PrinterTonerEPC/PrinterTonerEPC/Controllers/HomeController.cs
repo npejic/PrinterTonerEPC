@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using PrinterTonerEPC.DAL;
 using PrinterToner.Models;
-
+using System.Data;
+using System.Data.Entity;
+using System.Net;
 
 namespace PrinterTonerEPC.Controllers
 {
@@ -23,7 +25,8 @@ namespace PrinterTonerEPC.Controllers
             var CountRentedPrinters = sales.Count();
             ViewData["CountRentedPrinters"] = CountRentedPrinters;
 
-            var openedTasks = db.ToDoes.Where(c => c.Closed == null).OrderBy(c => c.Created);
+            var openedTasks = db.ToDoes.Include(t => t.User).OrderBy(c => c.Closed != null).ThenBy(c => c.Created).ToList();
+            //var openedTasks = db.ToDoes.Where(c => c.Closed == null).OrderBy(c => c.Created);
             return View(openedTasks);
         }
 

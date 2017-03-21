@@ -17,6 +17,9 @@
     <table class="table">
         <tr>
             <th>
+                Radnik
+            </th>
+            <th>
                 Opis posla
             </th>
             <th>
@@ -30,10 +33,14 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.User.Nick)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Created)
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Created))
+                    @*@Html.DisplayFor(modelItem => item.Created)*@
                 </td>
 
                 <td>
