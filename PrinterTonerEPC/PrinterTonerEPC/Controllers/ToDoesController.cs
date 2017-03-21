@@ -61,7 +61,9 @@ namespace PrinterTonerEPC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username", toDo.UserID);
+
+            var sortedUsers = db.Users.OrderBy(c => c.Nick);
+            ViewBag.UserID = new SelectList(sortedUsers, "UserID", "Nick", toDo.UserID);
             return View(toDo);
         }
 
@@ -78,7 +80,7 @@ namespace PrinterTonerEPC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "Username", toDo.UserID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Nick", toDo.UserID);
             return View(toDo);
         }
 
