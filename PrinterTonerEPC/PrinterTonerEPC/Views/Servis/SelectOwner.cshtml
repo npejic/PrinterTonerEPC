@@ -4,22 +4,20 @@
     ViewBag.Title = "SelectOwner";
 }
 
-<h2>SelectOwner</h2>
 @using (Html.BeginForm())
 {
-<div class="form-group">
-    @Html.LabelFor(model => model.OwnerID, "Vlasnik", htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.DropDownListFor(m => m.OwnerID, (SelectList)ViewBag.OwnerID)
-        @*@Html.DropDownList("OwnerID", null, string.Empty, htmlAttributes: new { @class = "form-control" })*@
-        @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.OwnerID, "Izaberi firmu", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.OwnerID, (SelectList)ViewBag.OwnerID, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
+        </div>
     </div>
-</div>
 
-<button type="submit">Submit</button>
-}
-@*<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Sačuvaj" class="btn btn-default" />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Izaberi" class="btn btn-default" />
+        </div>
     </div>
-</div>*@
+
+}

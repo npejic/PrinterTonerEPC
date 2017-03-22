@@ -25,8 +25,6 @@
             <th>
                 Kreiran
             </th>
-            <th></th>
-            <th></th>
         </tr>
 
         @foreach (var item in Model)
@@ -40,14 +38,10 @@
                 </td>
                 <td>
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Created))
-                    @*@Html.DisplayFor(modelItem => item.Created)*@
                 </td>
-
                 <td>
                     @Html.ActionLink("Izmeni", "Edit", "ToDoes", new { id = item.ToDoID }, null)
                 </td>
-                <th></th>
-                <th></th>
             </tr>
         }
 
