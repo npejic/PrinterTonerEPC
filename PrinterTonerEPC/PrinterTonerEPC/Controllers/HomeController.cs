@@ -25,8 +25,8 @@ namespace PrinterTonerEPC.Controllers
             var CountRentedPrinters = sales.Count();
             ViewData["CountRentedPrinters"] = CountRentedPrinters;
 
+            //list of opened todoes (without closing date), shown on top of the HomeIndexView
             var openedTasks = db.ToDoes.Include(t => t.User).Where(c => c.Closed == null).OrderBy(c => c.Created).ToList();
-            //var openedTasks = db.ToDoes.Where(c => c.Closed == null).OrderBy(c => c.Created);
             return View(openedTasks);
         }
 
