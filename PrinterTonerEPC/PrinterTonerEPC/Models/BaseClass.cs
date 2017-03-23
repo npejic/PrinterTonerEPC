@@ -9,7 +9,11 @@ namespace PrinterToner.Models
     {
         public BaseClass()
         {
-            this.Created = DateTime.Now;
+            string zoneId = "W. Europe Standard Time";
+            TimeZoneInfo tzi = TimeZoneInfo.FindSystemTimeZoneById(zoneId);
+            DateTime utcTime = DateTime.UtcNow;
+            this.Created = TimeZoneInfo.ConvertTimeFromUtc(utcTime, tzi);
+            //this.Created = DateTime.Now;
         }
         /// <summary>
         /// Property that stores current date and time of creation
