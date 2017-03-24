@@ -48,6 +48,14 @@
                 @Html.ValidationMessageFor(model => model.TonerGram, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TonerGram, "Gramaža", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TonerGram, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TonerGram, "", new { @class = "text-danger" })
+            </div>
+        </div>
        
         <div class="form-group">
             @Html.LabelFor(model => model.TonerProductNo, "ProductNo", htmlAttributes: new { @class = "control-label col-md-2" })
