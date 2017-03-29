@@ -15,7 +15,6 @@ namespace PrinterTonerEPC.Controllers
     {
         private PrinterTonerContext db = new PrinterTonerContext();
 
-        // GET: SaleToners
         public ActionResult Index()
         {
             var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)

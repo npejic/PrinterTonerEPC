@@ -1,3 +1,5 @@
+http://npejic-001-site1.htempurl.com/
+
 OK 1. Ispis KERTANJE STAMPACA ubaciti kolonu MODEL (štampaca) izmedju Firme i Serijskog broja.
 
 OK 2. Definisati spisak korisnika programa kao sto je definisana Lista svih firmi. Polja koja treba da opisuju korisnika: 
