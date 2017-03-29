@@ -15,7 +15,6 @@ namespace PrinterTonerEPC.Controllers
     {
         private PrinterTonerContext db = new PrinterTonerContext();
 
-        // GET: Toners
         public ActionResult Index()
         {
             var toners = db.Toners.OrderBy(t => t.TonerModel).ThenBy(t=>t.TonerYield).ThenBy(t=>t.TonerGram);
@@ -23,7 +22,6 @@ namespace PrinterTonerEPC.Controllers
             return View(toners.ToList());
         }
 
-        // GET: Toners/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,13 +36,11 @@ namespace PrinterTonerEPC.Controllers
             return View(toner);
         }
 
-        // GET: Toners/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Toners/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerProductNo,TonerGram,Created")] Toner toner)
@@ -60,7 +56,6 @@ namespace PrinterTonerEPC.Controllers
             return View(toner);
         }
 
-        // GET: Toners/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -75,7 +70,6 @@ namespace PrinterTonerEPC.Controllers
             return View(toner);
         }
 
-        // POST: Toners/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TonerID,TonerModel,TonerIsOriginal,TonerYield,TonerGram,TonerProductNo,Created")] Toner toner)
@@ -89,7 +83,6 @@ namespace PrinterTonerEPC.Controllers
             return View(toner);
         }
 
-        // GET: Toners/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +97,6 @@ namespace PrinterTonerEPC.Controllers
             return View(toner);
         }
 
-        // POST: Toners/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

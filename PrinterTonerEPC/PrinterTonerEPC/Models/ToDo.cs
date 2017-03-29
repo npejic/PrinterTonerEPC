@@ -10,14 +10,13 @@ namespace PrinterToner.Models
     {
         public int ToDoID { get; set; }
         
-        //public DateTime? Opened { get; set; }
-     
         public string Description { get; set; }
 
         public DateTime? Closed { get; set; }
         public int UserID { get; set; }
         public virtual User User { get; set; }
 
+        //TODO: delete, not going to be used anymore
         public bool IsClosed { get; set; }
     }
 }

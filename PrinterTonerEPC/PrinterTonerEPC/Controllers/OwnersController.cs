@@ -15,7 +15,6 @@ namespace PrinterTonerEPC.Controllers
     {
         private PrinterTonerContext db = new PrinterTonerContext();
 
-        // GET: Owners
         public ActionResult Index(string searchByOwner)
         {
             PrinterTonerContext db = new PrinterTonerContext();
@@ -30,9 +29,6 @@ namespace PrinterTonerEPC.Controllers
             return View(owners.ToList());
         }
 
-        
-
-        // GET: Owners/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -47,13 +43,11 @@ namespace PrinterTonerEPC.Controllers
             return View(owner);
         }
 
-        // GET: Owners/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Owners/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV, OwnerEmail,OwnerIsActive,Created, Napomena")] Owner owner)
@@ -68,7 +62,6 @@ namespace PrinterTonerEPC.Controllers
             return View(owner);
         }
 
-        // GET: Owners/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,7 +76,6 @@ namespace PrinterTonerEPC.Controllers
             return View(owner);
         }
 
-        // POST: Owners/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OwnerID,OwnerName,OwnerTelephone,OwnerAddress,OwnerContact,OwnerContactTelephone,OwnerPIB,OwnerMatBroj,OwnerIsInPDV, OwnerEmail,OwnerIsActive,Created, Napomena")] Owner owner)
@@ -97,7 +89,6 @@ namespace PrinterTonerEPC.Controllers
             return View(owner);
         }
 
-        // GET: Owners/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,7 +103,6 @@ namespace PrinterTonerEPC.Controllers
             return View(owner);
         }
 
-        // POST: Owners/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

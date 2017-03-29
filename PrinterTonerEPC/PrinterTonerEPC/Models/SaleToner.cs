@@ -14,9 +14,6 @@ namespace PrinterToner.Models
         public DateTime SaleTonerDate { get; set; }
         public float TonerPrice { get; set; }
 
-        //public int ContractID { get; set; }
-        //public virtual Contract Contract { get; set; }
-
         public int OwnerID { get; set; }
         public virtual Owner Owner { get; set; }
 

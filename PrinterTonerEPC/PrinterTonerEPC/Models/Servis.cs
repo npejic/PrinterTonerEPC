@@ -11,9 +11,6 @@ namespace PrinterToner.Models
         public DateTime ServisDate { get; set; }
         public float ServisPrice { get; set; }
 
-        //public int OwnerID { get; set; }
-        //public virtual Owner Owner { get; set; }
-
         public int PrinterID { get; set; }
         public virtual Printer Printer { get; set; }
 

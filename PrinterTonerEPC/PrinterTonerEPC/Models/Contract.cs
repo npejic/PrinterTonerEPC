@@ -26,7 +26,6 @@ namespace PrinterToner.Models
         public int ContactDuration { get; set; }
          
         public bool ContractComplete { get; set; }
-        //public bool ContractActive { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
     }

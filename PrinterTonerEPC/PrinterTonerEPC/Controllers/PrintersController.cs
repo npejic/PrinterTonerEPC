@@ -15,14 +15,12 @@ namespace PrinterTonerEPC.Controllers
     {
         private PrinterTonerContext db = new PrinterTonerContext();
 
-        // GET: Printers
         public ActionResult Index()
         {
             var sortedPrinters = db.Printers.OrderBy(p => p.PrinterManufacturer).ThenBy(p => p.PrinterModel).ThenBy(p => p.PrinterSerialNo);
             return View(sortedPrinters.ToList());
         }
 
-        // GET: Printers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,14 +35,12 @@ namespace PrinterTonerEPC.Controllers
             return View(printer);
         }
 
-        // GET: Printers/Create
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             return View();
         }
 
-        // POST: Printers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PrinterID,OwnerID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
@@ -59,7 +55,6 @@ namespace PrinterTonerEPC.Controllers
             return View(printer);
         }
 
-        // GET: Printers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -71,12 +66,10 @@ namespace PrinterTonerEPC.Controllers
             {
                 return HttpNotFound();
             }
-            //TODO:izmena
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName", printer.OwnerID);
             return View(printer);
         }
 
-        // POST: Printers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PrinterID,OwnerID,PrinterInternalNo,PrinterManufacturer,PrinterModel,PrinterSerialNo,PrinterHardwareNo,PrinterDecommissioned,IsEPCprinter,Created")] Printer printer)
@@ -91,7 +84,6 @@ namespace PrinterTonerEPC.Controllers
             return View(printer);
         }
 
-        // GET: Printers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,7 +98,6 @@ namespace PrinterTonerEPC.Controllers
             return View(printer);
         }
 
-        // POST: Printers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

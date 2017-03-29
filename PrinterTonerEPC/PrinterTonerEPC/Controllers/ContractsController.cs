@@ -26,7 +26,7 @@ namespace PrinterTonerEPC.Controllers
         }
 
         /// <summary>
-        /// Report for contracts that are no longer active
+        /// Report No.2 for contracts that are no longer active
         /// </summary>
         /// <returns>sends inactiveOwners list to View</returns>
         public ActionResult InactiveOwners()
@@ -37,12 +37,10 @@ namespace PrinterTonerEPC.Controllers
             var Today= DateTime.Now.Date; //.Date is not suported by LINQ
             
             inactiveOwners = inactiveOwners.Where(a=>DbFunctions.AddMonths(a.ContractDate,a.ContactDuration) < Today );
-            //inactiveOwners = inactiveOwners.Where(a => a.ContractActive == false && DbFunctions.AddMonths(a.ContractDate, a.ContactDuration) < Today);
 
             return View(inactiveOwners.ToList());
         }
 
-        // GET: Contracts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -57,14 +55,12 @@ namespace PrinterTonerEPC.Controllers
             return View(contract);
         }
 
-        // GET: Contracts/Create
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             return View();
         }
 
-        // POST: Contracts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,ContractActive,Created")] Contract contract)
@@ -80,7 +76,6 @@ namespace PrinterTonerEPC.Controllers
             return View(contract);
         }
 
-        // GET: Contracts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,7 +91,6 @@ namespace PrinterTonerEPC.Controllers
             return View(contract);
         }
 
-        // POST: Contracts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ContractID,ContractName,OwnerID,ContractIs,ContactDuration,ContractComplete,ContractDate,ContractActive,Created")] Contract contract)
@@ -111,7 +105,6 @@ namespace PrinterTonerEPC.Controllers
             return View(contract);
         }
 
-        // GET: Contracts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -126,7 +119,6 @@ namespace PrinterTonerEPC.Controllers
             return View(contract);
         }
 
-        // POST: Contracts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

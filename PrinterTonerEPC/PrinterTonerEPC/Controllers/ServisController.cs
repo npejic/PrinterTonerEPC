@@ -16,7 +16,6 @@ namespace PrinterTonerEPC.Controllers
         private PrinterTonerContext db = new PrinterTonerContext();
         int selectedOwnerForServis;
 
-        // GET: Servis
         public ActionResult Index(string searchBySerialNo, string searchByOwner)
         {
             var servis = db.Servis.Include(s => s.Printer).OrderBy(s => s.Printer.Owner.OwnerName).ThenBy(o => o.ServisDate);
@@ -34,7 +33,6 @@ namespace PrinterTonerEPC.Controllers
             return View(servis.ToList());
         }
 
-        // GET: Servis/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -49,20 +47,17 @@ namespace PrinterTonerEPC.Controllers
             return View(servis);
         }
 
-        //// GET: Servis/Create
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
             
-            var aaa = (int)TempData["OwnerID"];
-            var printersBySelectedOwner = db.Printers.Where(p => p.OwnerID == aaa);
+            var chosenOwner = (int)TempData["OwnerID"];
+            var printersBySelectedOwner = db.Printers.Where(p => p.OwnerID == chosenOwner);
             
             ViewBag.PrinterID = new SelectList(printersBySelectedOwner, "PrinterID", "PrinterSerialNo");
             return View();
         }
 
-
-        // POST: Servis/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ServisID,ServisDate,ServisPrice,PrinterID,Napomena,Created")] Servis servis)
@@ -78,7 +73,6 @@ namespace PrinterTonerEPC.Controllers
             return View(servis);
         }
 
-        // GET: Servis/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,7 +88,6 @@ namespace PrinterTonerEPC.Controllers
             return View(servis);
         }
 
-        // POST: Servis/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ServisID,ServisDate,ServisPrice,PrinterID,Napomena,Created")] Servis servis)
@@ -109,7 +102,6 @@ namespace PrinterTonerEPC.Controllers
             return View(servis);
         }
 
-        // GET: Servis/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,7 +116,6 @@ namespace PrinterTonerEPC.Controllers
             return View(servis);
         }
 
-        // POST: Servis/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -135,7 +126,6 @@ namespace PrinterTonerEPC.Controllers
             return RedirectToAction("Index");
         }
 
-        //TODO izmena
         public ActionResult SelectOwner()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");

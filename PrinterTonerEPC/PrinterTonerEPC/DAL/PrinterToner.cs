@@ -20,12 +20,11 @@ namespace PrinterTonerEPC.DAL
         public DbSet<SaleToner> SaleToners { get; set; }
         public DbSet<PrinterTonerCompatibility> PrinterTonerCompatibilitys { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ToDo> ToDoes { get; set; }
 
         internal void SubmitChanges()
         {
             throw new NotImplementedException();
         }
-
-        public System.Data.Entity.DbSet<PrinterToner.Models.ToDo> ToDoes { get; set; }
     }
 }

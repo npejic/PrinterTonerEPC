@@ -36,12 +36,8 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
-
-        //GET
         public ActionResult Login()
         {
-            
-
             return View();
         }
         
@@ -52,8 +48,7 @@ namespace PrinterTonerEPC.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
-            //User ClientToCheck = new User {Username=userName, Password = password};
+        
             if (db.Users.Any(a => a.Username == userName && a.Password == password))
             {
                 var currentClient = db.Users.Where(a => a.Username == userName && a.Password == password).FirstOrDefault();
@@ -63,13 +58,6 @@ namespace PrinterTonerEPC.Controllers
                 { Session["userIsAdministrator"] = "Client"; }
                 return RedirectToAction("Index", "Home");
             }
-            
-            //if ("simic".Equals(userName) && "ognjen".Equals(password)) 
-            //{
-            //    Session["user"] = "Ognjen";
-            //    return RedirectToAction("Index", "Home");
-            //}
-
             return View();
         }
     }

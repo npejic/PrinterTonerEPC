@@ -21,17 +21,16 @@ namespace PrinterTonerEPC.Controllers
             var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)
                                 .OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
 
-
-
-
             return View(saleToners.ToList());
         }
 
         //Returns list of owners (companies) that didn't order toners in last X (periodInMonths) months
+        //Report No.5
         public ActionResult TonerAlarm(string periodInMonths)
         {
 
-            var ownersWithNoAlarmOrder = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
+            var ownersWithNoAlarmOrder = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate)
+                                        .FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
 
             if (!String.IsNullOrEmpty(periodInMonths))
             {
@@ -44,18 +43,10 @@ namespace PrinterTonerEPC.Controllers
             return View(ownersWithNoAlarmOrder.ToList());
         }
 
-
-        //TotalTonerSale
+        //Report No.6
         public ActionResult TotalTonerSale(string dateFrom, string dateTo)
         {
-            //var totalTonerSale = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
-            //var totalTonerSale = db.SaleToners.Select(g => g.Toner.TonerModel);//.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
-
-            //if (!String.IsNullOrEmpty(searchByOwner) || !String.IsNullOrEmpty(searchByToner))
-            //{
-            //    totalTonerSale = totalTonerSale.Where(o => o.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
-            //}
-
+            //TODO: missing part of the code which will return tonerSale between dateFrom and dateTo
             var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
             {
                 TotalTonerModel = r.Key,
@@ -65,20 +56,15 @@ namespace PrinterTonerEPC.Controllers
             return View(reports.ToList());
         }
 
-        //LastTonerSale
+        //Report No.4
         public ActionResult LastTonerSale(string searchByOwner, string searchByToner)
         {
-
-            ///OVO RADI!!! treba samo da zanemari koji je ugovor u pitanju i prikaže samo vlasnika
-            //var lastTonerSale = db.SaleToners.GroupBy(g => new { g.ContractID, g.TonerID }).Select(s=>s.OrderByDescending(x=>x.SaleTonerDate).FirstOrDefault());
-
             var lastTonerSale = db.SaleToners.GroupBy(g => new { g.Owner.OwnerName, g.TonerID }).Select(s => s.OrderByDescending(x => x.SaleTonerDate).FirstOrDefault()).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel);
 
             if (!String.IsNullOrEmpty(searchByOwner))
             {
                 lastTonerSale = lastTonerSale.Where(o => o.Owner.OwnerName.Contains(searchByOwner)).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             }
-
 
             if (!String.IsNullOrEmpty(searchByToner))
             {
@@ -88,8 +74,6 @@ namespace PrinterTonerEPC.Controllers
             return View(lastTonerSale.ToList());
         }
 
-
-        // GET: SaleToners/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -104,7 +88,6 @@ namespace PrinterTonerEPC.Controllers
             return View(saleToner);
         }
 
-        // GET: SaleToners/Create
         public ActionResult Create()
         {
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
@@ -112,7 +95,6 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
-        // POST: SaleToners/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID")] SaleToner saleToner)
@@ -129,7 +111,6 @@ namespace PrinterTonerEPC.Controllers
             return View(saleToner);
         }
 
-        // GET: SaleToners/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -146,7 +127,6 @@ namespace PrinterTonerEPC.Controllers
             return View(saleToner);
         }
 
-        // POST: SaleToners/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID")] SaleToner saleToner)
@@ -162,7 +142,6 @@ namespace PrinterTonerEPC.Controllers
             return View(saleToner);
         }
 
-        // GET: SaleToners/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -177,7 +156,6 @@ namespace PrinterTonerEPC.Controllers
             return View(saleToner);
         }
 
-        // POST: SaleToners/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -26,9 +26,5 @@ namespace PrinterToner.Models
         
         public int PrinterID { get; set; }
         public virtual Printer Printer { get; set; }
-
-        //public int TonerID { get; set; }
-        //public virtual Toner Toner { get; set; }
-
     }
 }

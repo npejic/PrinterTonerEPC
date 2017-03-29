@@ -34,7 +34,6 @@ namespace PrinterToner.Models
         public bool OwnerIsActive { get; set; }
         public string Napomena { get; set; }
 
-        //TODO: promena
         public virtual ICollection<Printer> Printers { get; set; }
         
         public virtual ICollection<Contract> Contracts { get; set; }
