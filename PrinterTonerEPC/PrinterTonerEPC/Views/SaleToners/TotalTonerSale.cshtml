@@ -6,6 +6,12 @@
 
 <h2>Ukupan broj prodatih tonera</h2>
 
+@using (Html.BeginForm())
+{ <p> Datum od: @Html.TextBox("dateFromString") <input type="submit" value="Search" /></p> }
+
+@using (Html.BeginForm())
+{ <p> Datum do: @Html.TextBox("dateToString") <input type="submit" value="Search" /></p> }
+
 <table class="table">
     <tr>
         <th>

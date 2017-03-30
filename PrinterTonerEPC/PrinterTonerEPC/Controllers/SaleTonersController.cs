@@ -38,19 +38,33 @@ namespace PrinterTonerEPC.Controllers
                 LimitDate = LimitDate.AddMonths(-period);
                 ownersWithNoAlarmOrder = ownersWithNoAlarmOrder.Where(o => o.SaleTonerDate < LimitDate && o.Owner.OwnerIsActive == true).OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
             }
-
             return View(ownersWithNoAlarmOrder.ToList());
         }
 
         //Report No.6
-        public ActionResult TotalTonerSale(string dateFrom, string dateTo)
+        public ActionResult TotalTonerSale(string dateFromString, string dateToString)
         {
-            //TODO: missing part of the code which will return tonerSale between dateFrom and dateTo
             var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
             {
                 TotalTonerModel = r.Key,
                 TonerTotalCount = r.Count()
             }).OrderBy(c => c.TonerTotalCount);
+            
+            //TODO: missing part of the code which will return tonerSale between dateFrom and dateTo
+            //var reports = db.SaleToners;
+            if (!String.IsNullOrEmpty(dateFromString) || !String.IsNullOrEmpty(dateToString))
+            {
+                DateTime dateFrom = Convert.ToDateTime(dateFromString);
+                DateTime dateTo = Convert.ToDateTime(dateToString);
+                var reports1 = db.SaleToners.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo);
+                //reports = reports1; 
+            }
+            
+            //var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
+            //{
+            //    TotalTonerModel = r.Key,
+            //    TonerTotalCount = r.Count()
+            //}).OrderBy(c => c.TonerTotalCount);
           
             return View(reports.ToList());
         }

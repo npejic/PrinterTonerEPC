@@ -35,7 +35,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sales.ToList());
         }
 
-        // GET: Sales/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -50,16 +49,13 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        // GET: Sales/CreateByOwner
         public ActionResult CreateByOwner()
         {
-            
             ViewBag.PrinterID = new SelectList(db.Printers, "PrinterID", "PrinterSerialNo");
 
             return View();
         }
 
-        // GET: Sales/Create
         public ActionResult Create()
         {
             var printersNotOwnedByEPC = db.Printers.Where(p => p.Owner.OwnerName == "EPC DOO");
@@ -69,7 +65,6 @@ namespace PrinterTonerEPC.Controllers
             return View();
         }
 
-        // POST: Sales/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)
@@ -86,7 +81,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        // GET: Sales/Edit/5
         public ActionResult EditSalesReportByOwner(int? id)
         {
             if (id == null)
@@ -104,7 +98,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        // POST: Sales/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditSalesReportByOwner([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)
@@ -121,8 +114,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        
-        // GET: Sales/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -140,7 +131,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        // POST: Sales/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "SaleID,SaleDate,Price,LocationOfPrinterIs,ContractID,AlternateContract,PrinterID,TonerID,Created")] Sale sale)
@@ -157,7 +147,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        // GET: Sales/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -172,7 +161,6 @@ namespace PrinterTonerEPC.Controllers
             return View(sale);
         }
 
-        // POST: Sales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
