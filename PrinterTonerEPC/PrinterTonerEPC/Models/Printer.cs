@@ -10,25 +10,30 @@ namespace PrinterToner.Models
     public class Printer : BaseClass
     {
         public int PrinterID { get; set; }
+
+        [Required(ErrorMessage = "Morate uneti naziv interni broj štampača")]
         [Index(IsUnique = true)]
         [StringLength(100)]
         public string PrinterInternalNo { get; set; }
+        
         [Required(ErrorMessage = "Morate uneti naziv proizvođača štampača")]
-        //[Index("Manufaturer_Model", 1, IsUnique = true)]
+        [Index("Manufaturer_Model", 1, IsUnique = true)]
         [StringLength(100)]
         public string PrinterManufacturer { get; set; }
+        
         [Required(ErrorMessage = "Morate uneti model štampača")]
-        //[Index(IsUnique = true)]
-        //[Index("Manufaturer_Model", 2, IsUnique = true)]
+        [Index(IsUnique = true)]
+        [Index("Manufaturer_Model", 2, IsUnique = true)]
         [StringLength(100)]
         public string PrinterModel { get; set; }
+        
         [Required(ErrorMessage = "Morate uneti serijski broj štampača")]
-        [Index(IsUnique = true)]
         [StringLength(100)]
         public string PrinterSerialNo { get; set; }
         public string PrinterHardwareNo { get; set; }
                
         public bool PrinterDecommissioned { get; set; }
+        public string Remark { get; set; }
 
         public int? OwnerID { get; set; }
         public virtual Owner Owner { get; set; }

@@ -10,14 +10,16 @@ namespace PrinterToner.Models
     public class Toner : BaseClass
     {
         public int TonerID { get; set; }
+        
         [Required(ErrorMessage = "Morate uneti model tonera")]
         [Index(IsUnique = true)]
         [StringLength(100)]
         public string TonerModel { get; set; }
         public bool TonerIsOriginal { get; set; }
-        public int TonerYield { get; set; }
-        public int TonerGram { get; set; }
+        public int? TonerYield { get; set; }
+        public int? TonerGram { get; set; }
         public string TonerProductNo { get; set; }
+        public string Remark { get; set; }
 
         public virtual ICollection<SaleToner> SaleToners { get; set; }
 

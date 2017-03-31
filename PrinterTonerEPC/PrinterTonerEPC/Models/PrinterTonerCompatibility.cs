@@ -9,6 +9,8 @@ namespace PrinterToner.Models
     {
         public int PrinterTonerCompatibilityID { get; set; }
 
+        public string Remark { get; set; }
+
         public int PrinterID { get; set; }
         public virtual Printer Printer { get; set; }
 

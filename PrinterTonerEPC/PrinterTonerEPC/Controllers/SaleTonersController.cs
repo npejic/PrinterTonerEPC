@@ -17,8 +17,10 @@ namespace PrinterTonerEPC.Controllers
 
         public ActionResult Index()
         {
-            var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)
-                                .OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+            //var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)
+            //                    .OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
+
+            var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner).OrderByDescending(s => s.SaleTonerDate);
 
             return View(saleToners.ToList());
         }
@@ -103,8 +105,11 @@ namespace PrinterTonerEPC.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "OwnerName");
-            ViewBag.TonerID = new SelectList(db.Toners, "TonerID", "TonerModel");
+            var orderedOwners = db.Owners.OrderBy(c => c.OwnerName);
+            ViewBag.OwnerID = new SelectList(orderedOwners, "OwnerID", "OwnerName");
+
+            var orderedToners = db.Toners.OrderBy(c => c.TonerModel);
+            ViewBag.TonerID = new SelectList(orderedToners, "TonerID", "TonerModel");
             return View();
         }
 
