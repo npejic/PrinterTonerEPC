@@ -13,7 +13,7 @@
 { <p> Firma  : @Html.TextBox("searchByOwner") <input type="submit" value="Search" /></p> }
 
 <p>
-    @Html.ActionLink("Unesi novi", "SelectOwner")
+    @Html.ActionLink("Unesi novu", "SelectOwner")
 </p>
 <table class="table">
     <tr>
@@ -23,7 +23,6 @@
         </th>
         <th>
             Serijski broj
-            @*@Html.DisplayNameFor(model => model.Printer.PrinterInternalNo)*@
         </th>
         <th>
             Model štampača
@@ -32,7 +31,7 @@
             @Html.DisplayNameFor(model => model.ServisDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Napomena)
+            Napomena
         </th>
         <th>
             Cena
@@ -57,7 +56,7 @@
             @*@Html.DisplayFor(modelItem => item.ServisDate)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Napomena)
+            @Html.DisplayFor(modelItem => item.Remark)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ServisPrice)

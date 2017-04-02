@@ -23,6 +23,12 @@
         <th>
             Cena
         </th>
+        <th>
+            Količina
+        </th>
+        <th>
+            Faktura
+        </th>
         <th></th>
     </tr>
 
@@ -40,6 +46,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TonerPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TonerQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceNo)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SaleTonerID }) |

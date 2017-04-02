@@ -46,11 +46,11 @@ namespace PrinterTonerEPC.Controllers
         //Report No.6
         public ActionResult TotalTonerSale(string dateFromString, string dateToString)
         {
-            var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
+            var soldToners = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
             {
                 TotalTonerModel = r.Key,
-                TonerTotalCount = r.Count()
-            }).OrderBy(c => c.TonerTotalCount);
+                TonerTotalCount = r.Sum(c=> c.TonerQuantity),
+            }).OrderBy(c => c.TonerTotalCount).ToList();
             
             //TODO: missing part of the code which will return tonerSale between dateFrom and dateTo
             //var reports = db.SaleToners;
@@ -58,8 +58,15 @@ namespace PrinterTonerEPC.Controllers
             {
                 DateTime dateFrom = Convert.ToDateTime(dateFromString);
                 DateTime dateTo = Convert.ToDateTime(dateToString);
-                var reports1 = db.SaleToners.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo);
-                //reports = reports1; 
+                var soldTonersInPeriod = db.SaleToners.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo).GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
+                {
+                    TotalTonerModel = r.Key,
+                    TonerTotalCount = r.Sum(c => c.TonerQuantity),
+                }).OrderBy(c => c.TonerTotalCount).ToList();
+
+                soldToners = soldTonersInPeriod;
+                    //= reports.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo).ToList();
+                
             }
             
             //var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
@@ -67,8 +74,8 @@ namespace PrinterTonerEPC.Controllers
             //    TotalTonerModel = r.Key,
             //    TonerTotalCount = r.Count()
             //}).OrderBy(c => c.TonerTotalCount);
-          
-            return View(reports.ToList());
+
+            return View(soldToners.ToList());
         }
 
         //Report No.4
@@ -115,7 +122,7 @@ namespace PrinterTonerEPC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID")] SaleToner saleToner)
+        public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID,TonerQuantity")] SaleToner saleToner)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +154,7 @@ namespace PrinterTonerEPC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID")] SaleToner saleToner)
+        public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID,TonerQuantity")] SaleToner saleToner)
         {
             if (ModelState.IsValid)
             {

@@ -45,15 +45,15 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.IsClosed, "Zatvoren", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsReady, "Spreman", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsClosed)
-                    @Html.ValidationMessageFor(model => model.IsClosed, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.IsReady)
+                    @Html.ValidationMessageFor(model => model.IsReady, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

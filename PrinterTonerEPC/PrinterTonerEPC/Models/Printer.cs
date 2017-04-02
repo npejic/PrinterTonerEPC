@@ -22,14 +22,16 @@ namespace PrinterToner.Models
         public string PrinterManufacturer { get; set; }
         
         [Required(ErrorMessage = "Morate uneti model štampača")]
-        [Index(IsUnique = true)]
         [Index("Manufaturer_Model", 2, IsUnique = true)]
         [StringLength(100)]
         public string PrinterModel { get; set; }
         
         [Required(ErrorMessage = "Morate uneti serijski broj štampača")]
         [StringLength(100)]
+        [Index("Manufaturer_Model", 3, IsUnique = true)]
+        [Index(IsUnique = true)]
         public string PrinterSerialNo { get; set; }
+
         public string PrinterHardwareNo { get; set; }
                
         public bool PrinterDecommissioned { get; set; }

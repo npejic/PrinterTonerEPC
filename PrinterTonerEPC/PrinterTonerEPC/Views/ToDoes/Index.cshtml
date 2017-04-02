@@ -20,9 +20,9 @@
         <th>
             Datum završetka
         </th>
-        @*<th>
-            Završen
-        </th>*@
+        <th>
+            Spreman
+        </th>
         <th>
             Kreirano
         </th>
@@ -41,15 +41,15 @@
             @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Closed))
             @*@Html.DisplayFor(modelItem => item.Closed)*@
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.IsClosed)
-        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReady)
+        </td>
         <td>
             @Convert.ToString(string.Format("{0:dd/MM/yyyy HH:mm}", item.Created))
             @*@Html.DisplayFor(modelItem => item.Created)*@
         </td>
         <td>
-            @Html.ActionLink("Izmeni", "Edit", new { id=item.ToDoID }) |
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.ToDoID }) 
             @Html.ActionLink("Izbriši", "Delete", new { id=item.ToDoID })
         </td>
     </tr>
