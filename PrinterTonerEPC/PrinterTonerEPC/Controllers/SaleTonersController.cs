@@ -57,6 +57,10 @@ namespace PrinterTonerEPC.Controllers
             if (!String.IsNullOrEmpty(dateFromString) || !String.IsNullOrEmpty(dateToString))
             {
                 DateTime dateFrom = Convert.ToDateTime(dateFromString);
+                //if (DateTime.TryParse(dateFromString, out dateFrom))
+                //{
+
+                //}
                 DateTime dateTo = Convert.ToDateTime(dateToString);
                 var soldTonersInPeriod = db.SaleToners.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo).GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
                 {

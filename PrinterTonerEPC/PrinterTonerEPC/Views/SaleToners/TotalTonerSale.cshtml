@@ -2,15 +2,13 @@
 
 @{
     ViewBag.Title = "TotalTonerSale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Ukupan broj prodatih tonera</h2>
 
 @using (Html.BeginForm())
-{ <p> Datum od: @Html.TextBox("dateFromString") Datum do: @Html.TextBox("dateToString") <input type="submit" value="Search" /></p> }
-
-@*@using (Html.BeginForm())
-{ <p> Datum do: @Html.TextBox("dateToString") <input type="submit" value="Search" /></p> }*@
+{ <p> Datum od: @Html.TextBox("dateFromString", "", new { @class = "date-picker" }) Datum do: @Html.TextBox("dateToString", "", new { @class = "date-picker" }) <input type="submit" value="Search" /></p> }
 
 <table class="table">
     <tr>
@@ -35,3 +33,22 @@
     }
 
 </table>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.date-picker').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+        });
+    </script>
+
+}  
