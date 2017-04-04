@@ -9,6 +9,14 @@
 <p>
     @Html.ActionLink("Unesi novi", "Create")
 </p>
+
+<style>
+    .col1 { width: 110px; }
+
+    .col2 { width: 140px; }
+</style>
+
+
 <table class="table">
     <tr>
         <th>
@@ -23,10 +31,10 @@
         <th>
             Spreman
         </th>
-        <th>
+        <th class="col2">
             Kreirano
         </th>
-        <th></th>
+        <th class="col1"></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -49,7 +57,7 @@
             @*@Html.DisplayFor(modelItem => item.Created)*@
         </td>
         <td>
-            @Html.ActionLink("Izmeni", "Edit", new { id=item.ToDoID }) 
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.ToDoID }) |  
             @Html.ActionLink("Izbriši", "Delete", new { id=item.ToDoID })
         </td>
     </tr>

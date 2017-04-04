@@ -44,7 +44,15 @@ namespace PrinterTonerEPC.Controllers
         [HttpPost]
         public ActionResult Login(string userName, string password)
         {
-            if ("admin".Equals(userName) && "konzola555".Equals(password))
+            //Izračunava ukupan broj EPC štampača na iznajmljivanju
+            //PrinterTonerContext db = new PrinterTonerContext();
+            //var sales = from s in db.Sales
+            //            where s.Printer.Owner.OwnerName == "EPC DOO"
+            //            select s;
+            //var CountRentedPrinters = sales.Count();
+            //ViewData["CountRentedPrinters"] = CountRentedPrinters;
+
+           if ("admin".Equals(userName) && "konzola555".Equals(password))
             {
                 return RedirectToAction("Index", "Home");
             }

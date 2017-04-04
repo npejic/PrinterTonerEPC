@@ -17,7 +17,7 @@ namespace PrinterTonerEPC.Controllers
 
         public ActionResult Index()
         {
-            var toDoes = db.ToDoes.Include(t => t.User).OrderBy(c => c.Closed != null).ThenBy(c => c.Created);
+            var toDoes = db.ToDoes.Include(t => t.User).OrderBy(c => c.Closed != null).ThenBy(c => c.Closed);
             return View(toDoes.ToList());
         }
 
@@ -30,7 +30,7 @@ namespace PrinterTonerEPC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ToDoID,Description,Closed,UserID,IsClosed")] ToDo toDo)
+        public ActionResult Create([Bind(Include = "ToDoID,Description,Closed,UserID,IsReady")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace PrinterTonerEPC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ToDoID,Description,Closed,UserID,IsClosed")] ToDo toDo)
+        public ActionResult Edit([Bind(Include = "ToDoID,Description,Closed,UserID,IsReady")] ToDo toDo)
         {
             if (ModelState.IsValid)
             {

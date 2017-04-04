@@ -15,7 +15,7 @@
     <a href="http://epc.rs/">
         <img src="~/Images/epc logo manji.jpg" />
     </a>
-    <h1>   </h1>
+    <h1></h1>
 </div>
 
 @using (Html.BeginForm())
@@ -25,5 +25,6 @@
         <div>
             @Html.Label("User Name: ") @Html.TextBox("userName") @Html.Label("Password:   ")@Html.Password("Password") <input type="submit" value="Login" />
         </div>
+        @*<div><h3> Ukupan broj prodatih tonera @ViewData["CountRentedPrinters"].</h3></div>*@
         </div>
         }
