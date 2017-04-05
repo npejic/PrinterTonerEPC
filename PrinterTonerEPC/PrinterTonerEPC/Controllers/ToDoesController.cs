@@ -17,7 +17,7 @@ namespace PrinterTonerEPC.Controllers
 
         public ActionResult Index()
         {
-            var toDoes = db.ToDoes.Include(t => t.User).OrderBy(c => c.Closed != null).ThenBy(c=>c.Created).ThenByDescending(c => c.Closed);
+            var toDoes = db.ToDoes.Include(t => t.User).OrderBy(c => c.Closed != null).ThenByDescending(c=>c.Closed).ThenBy(c => c.Created);
             return View(toDoes.ToList());
         }
 
