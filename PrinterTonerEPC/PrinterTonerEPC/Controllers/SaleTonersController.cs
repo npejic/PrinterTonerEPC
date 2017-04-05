@@ -68,15 +68,11 @@ namespace PrinterTonerEPC.Controllers
                 }).OrderByDescending(c => c.TonerTotalCount).ToList();
 
                 soldToners = soldTonersInPeriod;
-                    //= reports.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo).ToList();
-                
             }
             
-            //var reports = db.SaleToners.GroupBy(r => r.Toner.TonerModel).Select(r => new TonerTotal()
-            //{
-            //    TotalTonerModel = r.Key,
-            //    TonerTotalCount = r.Count()
-            //}).OrderBy(c => c.TonerTotalCount);
+            //Izračunava ukupan broj EPC štampača na iznajmljivanju
+            var CountSoldToners = soldToners.Sum(c=>c.TonerTotalCount);
+            ViewData["CountSoldToners"] = CountSoldToners;
 
             return View(soldToners.ToList());
         }

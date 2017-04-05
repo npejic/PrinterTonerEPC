@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ukupan broj prodatih tonera</h2>
+<h2>Ukupan broj prodatih tonera @ViewData["CountSoldToners"]</h2>
 
 @using (Html.BeginForm())
 { <p> Datum od: @Html.TextBox("dateFromString", "", new { @class = "date-picker" }) Datum do: @Html.TextBox("dateToString", "", new { @class = "date-picker" }) <input type="submit" value="Search" /></p> }
