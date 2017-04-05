@@ -20,7 +20,7 @@ namespace PrinterTonerEPC.Controllers
             //var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner)
             //                    .OrderBy(s => s.Owner.OwnerName).ThenBy(s => s.Toner.TonerModel).ThenBy(s => s.SaleTonerDate);
 
-            var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner).OrderByDescending(s => s.SaleTonerDate);
+            var saleToners = db.SaleToners.Include(s => s.Owner).Include(s => s.Toner).OrderBy(s => s.SaleTonerDate);
 
             return View(saleToners.ToList());
         }
@@ -125,7 +125,7 @@ namespace PrinterTonerEPC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID,TonerQuantity")] SaleToner saleToner)
+        public ActionResult Create([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID,TonerQuantity,InvoiceNo")] SaleToner saleToner)
         {
             if (ModelState.IsValid)
             {
@@ -157,7 +157,7 @@ namespace PrinterTonerEPC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID,TonerQuantity")] SaleToner saleToner)
+        public ActionResult Edit([Bind(Include = "SaleTonerID,SaleTonerDate,TonerPrice,OwnerID,TonerID,TonerQuantity,InvoiceNo")] SaleToner saleToner)
         {
             if (ModelState.IsValid)
             {
