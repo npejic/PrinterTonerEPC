@@ -11,7 +11,7 @@
                 <h3>@ViewData["CountRentedPrinters"]</h3>
             </a>
         </div>*@
-<div style="text-align: center; "><h4>Ukupan broj prodatih tonera je @ViewData["CountRentedPrinters"]</h4></div>
+<div style="text-align: center; "><h4>Ukupan broj štampača na renti je @ViewData["CountRentedPrinters"]</h4></div>
     @*<h3>Welcome @Session["userIsAdministrator"]</h3>*@
 
     <table class="table">
@@ -21,6 +21,9 @@
             </th>
             <th>
                 Opis posla
+            </th>
+            <th>
+                Spreman
             </th>
             <th>
                 Kreiran
@@ -35,6 +38,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsReady)
                 </td>
                 <td>
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Created))

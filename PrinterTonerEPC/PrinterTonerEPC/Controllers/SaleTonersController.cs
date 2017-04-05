@@ -50,10 +50,9 @@ namespace PrinterTonerEPC.Controllers
             {
                 TotalTonerModel = r.Key,
                 TonerTotalCount = r.Sum(c=> c.TonerQuantity),
-            }).OrderBy(c => c.TonerTotalCount).ToList();
+            }).OrderByDescending(c => c.TonerTotalCount).ToList();
             
-            //TODO: missing part of the code which will return tonerSale between dateFrom and dateTo
-            //var reports = db.SaleToners;
+            //TODO: missing part of the code which will do TryParse DateTime input
             if (!String.IsNullOrEmpty(dateFromString) || !String.IsNullOrEmpty(dateToString))
             {
                 DateTime dateFrom = Convert.ToDateTime(dateFromString);
@@ -66,7 +65,7 @@ namespace PrinterTonerEPC.Controllers
                 {
                     TotalTonerModel = r.Key,
                     TonerTotalCount = r.Sum(c => c.TonerQuantity),
-                }).OrderBy(c => c.TonerTotalCount).ToList();
+                }).OrderByDescending(c => c.TonerTotalCount).ToList();
 
                 soldToners = soldTonersInPeriod;
                     //= reports.Where(c => c.SaleTonerDate > dateFrom && c.SaleTonerDate < dateTo).ToList();
