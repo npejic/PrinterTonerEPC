@@ -74,6 +74,37 @@ namespace PrinterTonerEPC.Controllers
             return View(toDo);
         }
 
+        public ActionResult EditFromHomeView(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ToDo toDo = db.ToDoes.Find(id);
+            if (toDo == null)
+            {
+                return HttpNotFound();
+            }
+
+            var sortedUsers = db.Users.OrderBy(c => c.Nick);
+            ViewBag.UserID = new SelectList(sortedUsers, "UserID", "Nick", toDo.UserID);
+            return View(toDo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFromHomeView([Bind(Include = "ToDoID,Description,Closed,UserID,IsReady")] ToDo toDo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(toDo).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index","Home");
+            }
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "Nick", toDo.UserID);
+            return View(toDo);
+        }
+
         public ActionResult Delete(int? id)
         {
             if (id == null)

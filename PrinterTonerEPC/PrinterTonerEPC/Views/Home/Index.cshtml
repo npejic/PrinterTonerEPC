@@ -46,7 +46,7 @@
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Created))
                 </td>
                 <td>
-                    @Html.ActionLink("Izmeni", "Edit", "ToDoes", new { id = item.ToDoID }, null)
+                    @Html.ActionLink("Izmeni", "EditFromHomeView", "ToDoes", new { id = item.ToDoID }, null)
                 </td>
             </tr>
         }

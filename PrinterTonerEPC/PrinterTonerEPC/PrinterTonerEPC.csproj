@@ -201,7 +201,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\EPC pejicr smarterNet.pubxml" />
     <None Include="Properties\PublishProfiles\printertonertracker - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\printertonertracker - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
@@ -295,6 +295,7 @@
     <Content Include="Views\ToDoes\Edit.cshtml" />
     <Content Include="Views\ToDoes\Index.cshtml" />
     <Content Include="Views\SaleToners\TotalTonerSale.cshtml" />
+    <Content Include="Views\ToDoes\EditFromHomeView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
