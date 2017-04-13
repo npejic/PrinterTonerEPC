@@ -14,6 +14,12 @@
 <div style="text-align: center; "><h4>Ukupan broj štampača na renti je @ViewData["CountRentedPrinters"]</h4></div>
     @*<h3>Welcome @Session["userIsAdministrator"]</h3>*@
 
+<style>
+    .col1 {
+        width: 110px;
+    }
+</style>
+
     <table class="table">
         <tr>
             <th>
@@ -25,7 +31,7 @@
             <th>
                 Spreman
             </th>
-            <th>
+            <th class="col1">
                 Kreiran
             </th>
         </tr>
