@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using PrinterToner.Models;
 using PrinterTonerEPC.DAL;
+using System.Data.SqlClient;
+using System.Data.Entity.Infrastructure;
 
 namespace PrinterTonerEPC.Controllers
 {
@@ -47,8 +49,25 @@ namespace PrinterTonerEPC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Printers.Add(printer);
-                db.SaveChanges();
+                //TODO:
+                try
+                {
+                    db.Printers.Add(printer);
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    return View("Error", new HandleErrorInfo(ex, "Printers", "Create"));
+                    //return HttpNotFound("ooops, there is no page like this :/");
+                    //ViewBag.printerError = "Štampač već postoji u bazi!";
+                    //Response.Redirect("/Shared/Error.cshtml");
+                }
+                catch (Exception e)
+                {
+                    return View("Error", new HandleErrorInfo(e, "Printers", "Create"));
+                }
+                ///////////////////////
+
                 return RedirectToAction("Index");
             }
 

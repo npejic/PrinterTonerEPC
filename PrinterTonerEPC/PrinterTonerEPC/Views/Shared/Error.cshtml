@@ -2,7 +2,15 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
+@model System.Web.Mvc.HandleErrorInfo
+<h1 class="text-danger">@Model.Exception.Message</h1>
+
+<h2 class="text-danger">Nastala je greška prilikom obrađivanja Vašeg zahteva.</h2>
+<h2 class="text-danger">Ukoliko se greška ponovi, molim kontaktirajte Ognjena.</h2>
+
+@Html.ActionLink("Povratak", @Model.ActionName, @Model.ControllerName)
+
+@*<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -10,8 +18,9 @@
 </head>
 <body>
     <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
+        @*<h1>@ViewBag.printerError</h1>
+        <h1>Nastala je greška prilikom obrađivanja Vašeg zahteva.</h1>
+        <h1>Ukoliko se greška ponovi, molim kontaktirajte Ognjena.</h1>
     </hgroup>
 </body>
-</html>
+</html>*@
