@@ -43,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.IsReady)
                 </td>
                 <td>
-                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Created))
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy HH:mm}", item.Created))
                 </td>
                 <td>
                     @Html.ActionLink("Izmeni", "EditFromHomeView", "ToDoes", new { id = item.ToDoID }, null)
