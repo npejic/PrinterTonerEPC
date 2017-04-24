@@ -5,7 +5,7 @@
     
 }
 
-<h2>Toner Alarm</h2>
+<h2>Alarm (ne)aktivnosti firme</h2>
 
 @using (Html.BeginForm())
 { <p> Posmatran broj meseci: @Html.TextBox("periodInMonths") <input type="submit" value="Search" /></p> }
@@ -21,15 +21,15 @@
         @*<th>
             Ugovor
         </th>*@
-        <th>
+        @*<th>
             Toner
-        </th>
+        </th>*@
         <th>
             Datum
         </th>
-        <th>
+        @*<th>
             Cena
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -42,16 +42,16 @@
             @*<td>
                 @Html.DisplayFor(modelItem => item.Contract.ContractName)
             </td>*@
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Toner.TonerModel)
-            </td>
+            </td>*@
             <td>
                 @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.SaleTonerDate))
                 @*@Html.DisplayFor(modelItem => item.SaleTonerDate)*@
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.TonerPrice)
-            </td>
+            </td>*@
          
         </tr>
     }
